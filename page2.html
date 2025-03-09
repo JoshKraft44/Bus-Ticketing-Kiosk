@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Primary Page</title>
+    <style>
+        img {
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            height: 50vh;
+        }
+
+        .btn-english {
+            position: fixed;
+            left: 100px;
+            bottom: 100px;
+            padding: 20px 40px;
+            background-color:grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-help {
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+            padding: 20px 40px;
+            background-color:grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-option {
+            position: relative;
+            font-size: 20px;
+            top: 10px;
+            bottom: 10px;
+            padding: 25px 80px;
+            background-color: white;
+            color: black;
+            border: 2px solid;
+            cursor: pointer;
+        }
+
+        em {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <img src="coc-logo.svg">
+    </div>
+
+    <h1 style="text-align: center; padding-bottom: 50px;">Calgary Transit</h1>
+
+    <div class = "container">
+        <button class="btn-option">Purchase <em>Ticket</em> or <em>Pass</em></button>
+        <button class="btn-option"><em>Reload</em> Transit Card</button>
+        <button class="btn-option">View Bus <em>Schedule</em></button>
+        <button class="btn-option">Cancel</button>
+    </div>
+
+    <button class="btn-english">English</button>
+    <button class="btn-help">Help</button>
+</body>
+</html>
