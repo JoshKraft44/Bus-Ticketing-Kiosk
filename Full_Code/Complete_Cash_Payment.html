@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .logo {
+            width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .cash {
+            width: 200px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+            margin-top: 10px;
+        }  
+
+        .link-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: brown;
+            color: white;
+            text-decoration: none;
+            border: 3px solid;
+            border-color: black;
+            cursor: pointer;
+            font-size: 30px;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 50px;
+        }   
+
+        .link-complete {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: blue;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 30px;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 50px;
+        }   
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="logo"; src="coc-logo.svg">
+        <h1>Complete Payment</h1>
+        <h1>Total cost:  $25.00</h1>
+        <h1 style="text-align: center;">Insert Cash Below</h1>
+
+        <div class="btn-group">
+            <img class="cash"; src="cash.png">
+            <img class="cash" src="arrow_down.png" style="align-items: center;">
+        </div>
+
+        <div class="=btn-group">
+            <a href="Payment_Methods.html" class="link-button">
+                <- Change Payment Method
+            </a>
+
+            <a href="Transaction_Complete.html" class="link-complete">
+                Payment Success!
+            </a>
+
+            <a href="PressToBegin.html" class="link-button">
+                Cancel [X]
+            </a>
+        </div>  
+    </div>
+
+</body>
+</html>

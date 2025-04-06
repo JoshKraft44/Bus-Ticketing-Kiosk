@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .logo {
+            width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: auto;
+        }
+
+        input[type="text"] {
+            width: 50%;
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-option {
+            position: relative;
+            font-size: 26px;
+            width: 300px;
+            padding: 25px 60px;
+            background-color: white;
+            color: black;
+            border: 2px solid;
+            cursor: pointer;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .btn-number {
+            position: relative;
+            font-size: 40px;
+            top: 10px;
+            bottom: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border: 2px solid;
+            cursor: pointer;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center">
+        <img class="logo"; src="coc-logo.svg">
+        <h1 style="padding-bottom: 20px;">Student Verification</h1>
+    </div>
+
+    <div class="container">
+        <label for="studentID" style="font-size: 30px;">Please enter your Student ID:</label>
+        <input type="text" id="studentID" name="studentID" placeholder="Student ID" required>
+    </div>
+
+    <div class="btn-group" style="margin-top: 50px;">
+        <button class="btn-option">Back</button>
+        <button class="btn-option">Confirm</button>
+        <button class="btn-option">BackSpace</button>
+    </div>
+
+    <p style="text-align: center; padding-top: 50px;">________________________________________________________________________________________________________________</p>
+
+    <div class="container">
+        <div class="btn-group">
+            <button class="btn-number">1</button>
+            <button class="btn-number">2</button>
+            <button class="btn-number">3</button>
+            <button class="btn-number">4</button>
+            <button class="btn-number">5</button>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-number">6</button>
+            <button class="btn-number">7</button>
+            <button class="btn-number">8</button>
+            <button class="btn-number">9</button>
+            <button class="btn-number">0</button>
+        </div>
+    </div>
+</body>
+</html>
