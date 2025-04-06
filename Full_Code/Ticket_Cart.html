@@ -121,14 +121,15 @@
     <script>
         document.querySelectorAll('.btn-group').forEach(group => {
             const quantityElement = group.querySelector('.quantity');
-            let quantity = quantityElement.textContent;
-     
-            group.querySelector('.minus').addEventListener('click', () => {
-                if(quantity > 0) {
+            group.querySelector('.minus')?.addEventListener('click', () => {
+
+                let quantity = parseInt(quantityElement.textContent); 
+                if (quantity > 0) {
                     quantity--;
                     quantityElement.textContent = quantity;
                 }
             });
+
         });
             
     </script>
