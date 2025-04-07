@@ -11,8 +11,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            margin: 45px auto;
+            margin: 39px auto;
+        }
+
+        .btn-group-2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 39px auto;
+            gap: 10px;
         }
 
         .btn-passType {
@@ -22,7 +29,7 @@
             border: 2px solid;
             border-radius: 5px;
             background: white;
-            font-size: 20px
+            font-size: 20px;
         }
 
         .btn-circle {
@@ -36,10 +43,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 22px;
         }
 
         .quantity {
-            font-size: 20px;
+            font-size: 30px;
             min-width: 40px;
             text-align: center;
             line-height: 40px;
@@ -69,43 +77,47 @@
             position: relative;
             width: 400px;
             text-align: center;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            margin-left: 50px;
-            margin-right: 50px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
         }   
+        .label-text {
+            font-size: 30px;
+            min-width: 300px;
+        }
     </style>
 </head>
 <body>
 <div style="text-align: center;">
 <img ,="" src="coc-logo.svg" style="padding-bottom: 10px;"/>
-<h1 style="font-size: 30px;">Select User Group</h1>
+<h1 style="padding-bottom: 0px;">Select User Group</h1>
 </div>
-<div class="btn-group row-1">
-<button class="btn-passType">Adult (age 18-65)</button>
+<div class="btn-group-2 row-1">
+<div class="label-text">Adult (age 18-65)</div>
 <button class="btn-circle minus">-</button>
 <span class="quantity">0</span>
 <button class="btn-circle plus">+</button>
 </div>
-<div class="btn-group row-2">
-<button class="btn-passType">Senior (age 65+)</button>
+<div class="btn-group-2 row-2">
+<div class="label-text">Senior (age 65+)</div>
 <button class="btn-circle minus">-</button>
 <span class="quantity">0</span>
 <button class="btn-circle plus">+</button>
 </div>
-<div class="btn-group row-3">
-<button class="btn-passType">Student (with ID)</button>
+<div class="btn-group-2 row-3">
+<div class="label-text">Student (with ID)</div>
 <button class="btn-circle minus">-</button>
 <span class="quantity">0</span>
 <button class="btn-circle plus">+</button>
 </div>
-<div class="btn-group row-4">
-<button class="btn-passType">Minor (age 0-17)</button>
+<div class="btn-group-2 row-4">
+<div class="label-text">Minor (age 0-17)</div>
 <button class="btn-circle minus">-</button>
 <span class="quantity">0</span>
 <button class="btn-circle plus">+</button>
 </div>
-<h2 style="text-align: center;">Total Amount: $XX.XX</h2>
+<h1 style="text-align: center;">Total Amount: $XX.XX</h1>
 <div class="btn-group">
 <a class="link-button" href="Select_Pass_Type.html">&lt;- Change a pass type</a>
 <a class="link-button" href="Pass_Cart.html">Add to Cart \_/</a>
