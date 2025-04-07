@@ -1,90 +1,72 @@
 <!DOCTYPE html>
-
 <html>
 <head>
+<title>Select Ticket Type</title>
 <style>
-        img {
-            width: 300px;
-            margin-bottom: 10px;
+    img {
+        width: 300px;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .link-button {
+        display: inline-block;
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: 2px solid black;
+        cursor: pointer;
+        font-size: 30px;
+        position: relative;
+        width: 400px;
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }  
+
+    .ticket-total {
+        margin-top: -40px;
+        margin-bottom: 15px;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin: 50px auto;
-        }
-
-        .btn-option {
-            position: relative;
-            font-size: 30px;
-            width: 350px;
-            padding: 25px 40px;
-            margin-left: 50px;
-            margin-right: 50px;
-            background-color: white;
-            color: black;
-            border: 2px solid;
-            cursor: pointer;
-        }
-
-        .btn-english {
-            font-size: 20px;
-            margin-left: 200px;
-            margin-right: 200px;
-            padding: 20px 40px;
-            background-color:grey;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .link-button {
-            display: inline-block;
-            background-color: white;
-            color: black;
-            text-decoration: none;
-            border: 2px solid;
-            border-color: black;
-            cursor: pointer;
-            font-size: 30px;
-            position: relative;
-            width: 350px;
-            text-align: center;
-            padding-top: 25px;
-            padding-bottom: 25px;
-            margin-left: 30px;
-            margin-right: 30px;
-        }   
     </style>
 </head>
 <body>
-<div style="text-align: center; padding-bottom: 30px;">
+<div style="text-align: center; padding-bottom: 38px;">
 <img src="coc-logo.svg"/>
-<h1 style="font-size: 30px; padding-bottom: 10px;">Select Ticket Type</h1>
+<h1 style="padding-bottom: 10px;">Select Ticket Type</h1>
 </div>
 <div class="container">
-<a class="link-button" href="Select_User_Group.html">Single Use</a>
-<a class="link-button" href="Select_User_Group.html">Round Ticket</a>
-<h1>Total Amount for Selected Tickets: $4.00</h1>
+<a class="link-button" href="Select_User_Group.html"><b>Single </b>Use</a>
+<a class="link-button" href="Select_User_Group.html"><b>Round Trip</b> Ticket</a>
+<div class="ticket-total">
+    <h1>Total Amount for Selected Tickets: $4.00</h1>
+  </div>  
 </div>
 <div class="btn-group">
-<a class="link-button" href="Purchase_Ticket_or_Pass.html">&lt;- Back</a>
-<a class="link-button" href="Ticket_Cart.html">Cart \_/</a>
+\
+<a class="link-button" href="Ticket_Cart.html">View Cart \_/</a>
 <a class="link-button" href="Confirm_Ticket_Payment.html">Pay -&gt;</a>
 </div>
-<p style="text-align: center;">________________________________________________________________________________________________________________</p>
+<p style="text-align: center; margin-top: 40px; margin-bottom: 65px;">________________________________________________________________________________________________________________</p>
 <div class="btn-group">
-<a class="link-button" href="PressToBegin.html">Cancel [X]</a><button class="link-button" onclick="openGuide()" style="width: 60px; font-size: 20px;">?</button>
+<a class="link-button" href="Purchase_Ticket_or_Pass.html">&lt;- Back</a>
+<a class="link-button" href="PressToBegin.html">Cancel [X]
+</a><button class="link-button" onclick="openGuide()" style="width: 60px; font-size: 30px;">?</button>
 </div>
 <script>
     function openGuide() {
@@ -125,5 +107,6 @@
 </ul>
 <button onclick="closeGuide()" style="margin-top: 20px; display: block;">Close</button></div><script>
 
-</script></body>
+</script>
+</body>
 </html>
