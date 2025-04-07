@@ -16,19 +16,6 @@
             gap: 3rem;
         }
 
-        .btn-english {
-            display: flex;
-            font-size: 20px;
-            padding: 20px 40px;
-            margin-left: 100px;
-            margin-right: 100px;
-            background-color:grey;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
         .btn-option {
             position: relative;
             font-size: 26px;
@@ -88,10 +75,17 @@
 <a class="link-button" href="Bus_Schedule.html">View Bus Schedule</a>
 <a class="link-button" href="Train_Schedule.html">View Train Schedule</a>
 </div>
-<p style="text-align: center;">_____________________________________________________________________________________________________________________</p>
-<div class="btn-group">
-<a class="link-button" href="PressToBegin.html">Cancel [X]</a><button class="link-button" onclick="openGuide()" style="width: 60px; font-size: 20px;">?</button>
-</div>
+<p style="text-align: center; margin: 40px auto 0px auto;">_____________________________________________________________________________________________________________________</p>
+
+<div class="btn-group" style="margin-top: 0px;">
+    <a class="link-button" href="PressToBegin.html" style="margin: 10px;">Cancel [X]</a>
+    <button class="link-button" onclick="openGuide()" style="width: 60px; height: 95px; font-size: 24px; margin: 10px;">?</button>
+  </div>
+  
+  
+
+
+
 <script>
     function openGuide() {
         document.getElementById('guidePopup').style.display = 'block';
