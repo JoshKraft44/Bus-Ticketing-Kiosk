@@ -10,7 +10,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 3rem;
     }
     .btn-group {
         display: flex;
@@ -18,6 +18,13 @@
         align-items: center;
         gap: 20px;
         margin: 30px auto;
+    }
+    .btn-group-2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -3.5px;
+        gap: 20px;
     }
     .btn-option {
         width: 400px;
@@ -56,36 +63,34 @@
         border: 2px solid black;
         font-size: 30px;
         text-align: center;
-        padding: 25px 0;
-        width: 350px;
-        margin: 10px;
+        padding: 30px 0;
+        width: 400px;
     }
+    em {
+            font-weight: bold;
+            font-style: italic;
+        }
 
 </style>
 </head>
 <body>
-<div style="text-align: center;">
-    <img src="coc-logo.svg"/>
-    <h1 style="font-size: 30px; padding-bottom: 10px;">Select Pass Type</h1>
+<div style="text-align: center; padding-bottom: 38px;">
+<img src="coc-logo.svg"/>
+<h1 style="padding-bottom: 10px;">Select Pass Type</h1>
 </div>
 
 <div class="container">
-    <a class="link-button" href="User_Group_for_Pass.html">Day Pass</a>
-    <a class="link-button" href="User_Group_for_Pass.html">Monthly Pass</a>
-    <a class="link-button" href="User_Group_for_Pass.html">Yearly Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html"><em>Day</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html"><em>Monthly</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html"><em>Yearly</em> Pass</a>
 </div>
 
-<div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 10px;">
-    <a class="link-button" href="Pass_Cart.html" style="margin: 0;">Cart \_/</a>
-    <a class="link-button" href="Confirm_Pass_Payment.html" style="margin: 0;">Pay -&gt;</a>
-</div>
+<p style="text-align: center; margin-top: 95px; margin-bottom: 66px;">________________________________________________________________________________________________________________</p>
 
-<p style="text-align: center; margin: 10px auto 5px auto;">________________________________________________________________________________________________________________</p>
-
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0;">
-    <a class="link-button" href="Purchase_Ticket_or_Pass.html" style="margin: 0;">&lt;- Back</a>
-    <a href="PressToBegin.html" style="background-color: white; color: black; border: 2px solid black; font-size: 30px; padding: 25px 40px; text-align: center; text-decoration: none; cursor: pointer;">Cancel [X]</a>
-    <button onclick="openGuide()" style="background-color: white; color: black; border: 2px solid black; font-size: 24px; padding: 25px; width: 60px; height: 95px; cursor: pointer;">?</button>
+<div class="btn-group-2">
+    <a class="link-button" href="Purchase_Ticket_or_Pass.html">&lt;- Back</a>
+    <a class="link-button" href="PressToBegin.html">Cancel [X]
+    </a><button class="link-button" onclick="openGuide()" style="width: 60px; font-size: 30px;">?</button>
 </div>
 
 <div id="guidePopup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80vw; max-height: 80vh; overflow-y: auto; padding: 30px; background: white; border: 2px solid black; z-index: 1000; font-size: 18px; line-height: 1.5; text-align: left;">
