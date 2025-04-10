@@ -157,10 +157,24 @@
 
     function finishVerification() {
       const studentID = studentIDInput.value;
+
+      // Validate the student ID
       if (studentID.length === 7 && /^\d+$/.test(studentID)) {
-        localStorage.removeItem('requiresStudentVerification');
-        window.location.href = "Confirm_Ticket_Payment.html";
+        // Store the student ID in sessionStorage
+        sessionStorage.setItem('studentID', studentID);
+
+        // Determine the next screen based on purchaseType
+        const purchaseType = sessionStorage.getItem('purchaseType');
+        if (purchaseType === 'ticket') {
+          window.location.href = "Confirm_Ticket_Payment.html";
+        } else if (purchaseType === 'pass') {
+          window.location.href = "Confirm_Pass_Payment.html";
+        } else {
+          console.error("Invalid purchase type. Redirecting to home.");
+          window.location.href = "PressToBegin.html"; // Fallback to home screen
+        }
       } else {
+        // Show error message if validation fails
         errorMessage.style.display = 'block';
       }
     }

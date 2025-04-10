@@ -78,6 +78,7 @@
   <img src="coc-logo.svg" alt="Calgary Logo">
   <h1>Your Cart</h1>
   <h2>Your Cart Items are Shown Below</h2>
+  <p id="passTypeDisplay" style="font-size: 18px; color: #555; margin-bottom: 20px;"></p>
 
   <div id="cartItemsContainer">
 
@@ -86,11 +87,11 @@
   <div id="totalAmount">Total Amount: $0.00</div>
 
   <div class="button-row">
-    <a class="link-button" href="User_Group_for_Pass.html"><i class="fa-solid fa-plus"></i> Add More Items</a>
+    <a class="link-button" href="User_Group_for_Pass.html" onclick="preserveCartState()"><i class="fa-solid fa-plus"></i> Add More Items</a>
     <a class="link-button" href="Confirm_Pass_Payment.html"><i class="fa-solid fa-credit-card"></i> Checkout</a>
   </div>
   <div class="button-row">
-    <a class="link-button" href="Select_Pass_Type.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <a class="link-button" href="User_Group_for_Pass.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <a class="link-button" href="PressToBegin.html"><i class="fa-solid fa-xmark"></i> Cancel</a>
     <button class="link-button" onclick="openGuide()" style="width: 60px; padding: 15px;"><i class="fa-solid fa-question"></i></button>
   </div>
@@ -102,12 +103,26 @@
   </div>
 
   <script>
-    const prices = {
-        "row-1": 3.50,
-        "row-2": 2.25,
+    const passPrices = {
+    daily: {
+        "row-1":4.50,
+        "row-2": 3.50,
         "row-3": 2.50,
-        "row-4": 1.75
-    };
+        "row-4":1.50
+    },
+    monthly: {
+        "row-1": 50.00,
+        "row-2": 40.00,
+        "row-3": 35.00,
+        "row-4": 30.00
+    },
+    yearly: {
+      "row-1":300.00,
+      "row-2": 250.00,    
+      "row-3": 200.00,
+      "row-4":150.00
+    }
+  };
     const rowLabels = {
         "row-1": "Adult (age 18–65)",
         "row-2": "Senior (age 65+)",
@@ -117,15 +132,19 @@
     function renderCartItems() {
         const container = document.getElementById('cartItemsContainer');
         container.innerHTML = '';
-
-        const ticketCounts = JSON.parse(sessionStorage.getItem('ticketCounts')) || {};
+        const passType = sessionStorage.getItem('passType') || 'daily';
+        const passTypeDisplay = document.getElementById('passTypeDisplay');
+        const formattedPassType = passType.charAt(0).toUpperCase() + passType.slice(1); // Capitalize first letter
+        passTypeDisplay.textContent = `Pass Type: ${formattedPassType}`;
+        console.log('passType:', passType);
+        const ticketCounts = JSON.parse(sessionStorage.getItem('passCounts')) || {};
         let total = 0;
 
         for (const row in ticketCounts) {
         const quantity = ticketCounts[row];
         if (quantity > 0) {
             const label = rowLabels[row];
-            const price = prices[row];
+            const price = passPrices[passType][row];
             total += quantity * price;
 
             const item = document.createElement('div');
@@ -138,6 +157,18 @@
 
         document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
     }
+    function preserveCartState() {
+      
+      const passCounts = JSON.parse(sessionStorage.getItem('passCounts')) || {};
+      const passType = sessionStorage.getItem('passType') || 'daily';
+      const totalPassAmount = sessionStorage.getItem('totalPassAmount') || 0;
+
+      // Ensure the current state is saved in sessionStorage
+      sessionStorage.setItem('passCountsCart', JSON.stringify(passCounts));
+      sessionStorage.setItem('passTypeCart', passType);
+      sessionStorage.setItem('totalPassAmountCart', totalPassAmount);
+    }
+    preserveCartState();
     renderCartItems();
     // function renderCart() {
     //   const cartData = JSON.parse(sessionStorage.getItem('cart')) || {};

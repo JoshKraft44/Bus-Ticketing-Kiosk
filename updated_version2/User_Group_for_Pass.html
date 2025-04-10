@@ -238,6 +238,7 @@
 
   function updateTotalAmountLabel() {
     let total = 0;
+    // Retrieve passCounts from sessionStorage or default to an empty object
     const counts = {};
 
     document.querySelectorAll('.btn-group-2').forEach(group => {
@@ -249,8 +250,8 @@
     });
 
     document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
-    sessionStorage.setItem('ticketCounts', JSON.stringify(counts));
-    sessionStorage.setItem('totalAmount', total.toFixed(2));
+    sessionStorage.setItem('passCounts', JSON.stringify(counts));
+    sessionStorage.setItem('totalPassAmount', total.toFixed(2));
   }
 
   document.querySelectorAll('.btn-group-2').forEach(group => {
@@ -293,19 +294,19 @@
   }
   // Load values from sessionStorage on page load
   window.addEventListener('DOMContentLoaded', () => {
-    const savedCounts = JSON.parse(sessionStorage.getItem('ticketCounts')) || {};
-
+    const savedCounts = JSON.parse(sessionStorage.getItem('passCountsCart'));
+    const total = parseFloat(sessionStorage.getItem('totalPassAmountCart')) || 0;
     for (const row in savedCounts) {
       const group = document.querySelector(`.${row}`);
       if (!group) continue;
 
       const quantityElement = group.querySelector('.quantity');
       quantityElement.textContent = savedCounts[row];
+      
     }
-
-    updateTotalAmountLabel(); // recalculate based on loaded data
+    document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
+    // updateReloadAmountLabel(); // recalculate based on loaded data
   });
-
   // Initial
   updateTotalAmountLabel();
 </script>

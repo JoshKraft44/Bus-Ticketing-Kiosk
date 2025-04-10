@@ -112,8 +112,8 @@
 
   <main>
     <div class="container">
-      <a class="link-button" href="Select_Ticket_Type.html">Purchase <em>Ticket</em></a>
-      <a class="link-button" href="Select_Pass_Type.html">Purchase <em>Pass</em></a>
+      <a class="link-button" href="Select_Ticket_Type.html" onclick="savePurchaseType('ticket')">Purchase <em>Ticket</em></a>
+      <a class="link-button" href="Select_Pass_Type.html" onclick="savePurchaseType('pass')">Purchase <em>Pass</em></a>
     </div>
 
     <hr>
@@ -167,6 +167,9 @@
     }
     function closeGuide() {
       document.getElementById('guidePopup').style.display = 'none';
+    }
+    function savePurchaseType(type) {
+      sessionStorage.setItem('purchaseType', type);
     }
   </script>
 </body>

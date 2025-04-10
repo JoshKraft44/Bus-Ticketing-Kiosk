@@ -126,9 +126,9 @@
   </div>
 
   <div class="container">
-    <a class="link-button" href="User_Group_for_Pass.html"><em>Day</em> Pass</a>
-    <a class="link-button" href="User_Group_for_Pass.html"><em>Monthly</em> Pass</a>
-    <a class="link-button" href="User_Group_for_Pass.html"><em>Yearly</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html" onclick="savePassType('daily')"><em>Day</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html" onclick="savePassType('monthly')"><em>Monthly</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html" onclick="savePassType('yearly')"><em>Yearly</em> Pass</a>
   </div>
 
   <div class="divider"></div>
@@ -164,6 +164,9 @@
     }
     function closeGuide() {
       document.getElementById('guidePopup').style.display = 'none';
+    }
+    function savePassType(type) {
+      sessionStorage.setItem('passType', type);
     }
   </script>
 
