@@ -202,10 +202,10 @@
 <script>
   const passPrices = {
     daily: {
-      adult: 4.50,
-      senior: 3.50,
-      student: 2.50,
-      minor: 1.50
+      adult: 7.50,
+      senior: 4.50,
+      student: 5.50,
+      minor: 3.50
     },
     monthly: {
       adult: 50.00,
@@ -222,7 +222,7 @@
   };
 
   function getPrice(row) {
-    const passType = sessionStorage.getItem('passType') || 'daily';
+    const passType = sessionStorage.getItem('passType') || 'pass';
     let userGroup;
     
     switch(row) {
