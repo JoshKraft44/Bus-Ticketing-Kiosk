@@ -5,8 +5,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
       text-align: center;
       margin: 0;
       padding: 0;
@@ -125,9 +126,9 @@
   </div>
 
   <div class="container">
-    <a class="link-button" href="User_Group_for_Pass.html" onclick="setPassType('daily')"><em>Day</em> Pass</a>
-    <a class="link-button" href="User_Group_for_Pass.html" onclick="setPassType('monthly')"><em>Monthly</em> Pass</a>
-    <a class="link-button" href="User_Group_for_Pass.html" onclick="setPassType('yearly')"><em>Yearly</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html"><em>Day</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html"><em>Monthly</em> Pass</a>
+    <a class="link-button" href="User_Group_for_Pass.html"><em>Yearly</em> Pass</a>
   </div>
 
   <div class="divider"></div>
@@ -158,9 +159,6 @@
   </div>
 
   <script>
-    function setPassType(type) {
-      sessionStorage.setItem('passType', type);
-    }
     function openGuide() {
       document.getElementById('guidePopup').style.display = 'block';
     }

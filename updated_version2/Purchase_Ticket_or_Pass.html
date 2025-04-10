@@ -13,6 +13,12 @@
       color: #333;
     }
 
+    header, main, footer {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+    }
+
     header {
       text-align: center;
       padding: 40px 20px 20px;
@@ -23,8 +29,8 @@
     }
 
     h1 {
-      font-size: 28px;
-      margin-top: 20px;
+      font-size: 32px;
+      margin-bottom: 40px;
     }
 
     .container {
@@ -113,9 +119,11 @@
     <hr>
 
     <div class="btn-group">
-      <a class="link-button small-button" href="Select_an_Option.html">&larr; Back</a>
+      <a href="Select_an_Option.html" class="icon-button" title="Back">
+        <i class="fas fa-arrow-left"></i>
+      </a>
       <a href="PressToBegin.html" class="icon-button" title="Cancel">
-        <i class="fas fa-times" style="color: #9c2121; text-decoration: none;"></i>
+        <i class="fas fa-times" style="color: #9c2121;"></i>
       </a>
       <button class="icon-button" onclick="openGuide()" title="Help">
         <i class="fas fa-question-circle"></i>
