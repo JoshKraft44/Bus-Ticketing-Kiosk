@@ -140,7 +140,15 @@
 
   <script>
     // Load dynamic cost
-    const total = sessionStorage.getItem("totalAmount") || "0.00";
+    
+    const purchaseType = sessionStorage.getItem('purchaseType'); // 'ticket' or 'pass'
+    let total = 0;
+    if(purchaseType == 'pass'){
+        total = sessionStorage.getItem("totalPassAmount") || "0.00";
+    }else{
+        total = sessionStorage.getItem("totalAmount") || "0.00";
+    }
+    
     document.getElementById("totalCost").textContent = `$${parseFloat(total).toFixed(2)}`;
   </script>
 </body>

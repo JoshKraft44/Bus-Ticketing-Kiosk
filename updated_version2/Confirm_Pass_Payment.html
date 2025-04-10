@@ -71,6 +71,7 @@
       font-size: 24px;
       width: 60px;
       display: inline-block;
+      cursor: pointer;
     }
 
     .ticket-label {
@@ -90,7 +91,23 @@
     <a class="link-button" href="Pass_Cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
     <a class="link-button" href="Payment_Methods.html"><i class="fa-solid fa-credit-card"></i> Pay</a>
   </div>
-
+  <!-- Guide Popup -->
+  <div id="guidePopup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 80vw; max-height: 80vh; overflow-y: auto; padding: 30px; background: white; border: 2px solid black;
+  z-index: 1000; font-size: 18px; line-height: 1.5; text-align: left; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+  <h2>Confirm Pass Payment: Quick Guide</h2>
+  <p>This page allows you to review your selected passes and proceed to payment.</p>
+  <h3>Steps:</h3>
+  <ol>
+  <li>Review the summary of your selected passes.</li>
+  <li>Check the total amount displayed at the bottom.</li>
+  <li>Click "Pay" to proceed to the payment screen.</li>
+  <li>Click "Cart" to return to your cart and make changes.</li>
+  <li>Click "Continue Purchasing" to add more passes.</li>
+  <li>Click "Cancel" to return to the home screen.</li>
+  </ol>
+  <button onclick="closeGuide()" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; border: none; background-color: #333; color: white; border-radius: 5px; cursor: pointer;">Close</button>
+  </div>
   <div class="button-row">
     <a class="link-button" href="PressToBegin.html"><i class="fa-solid fa-xmark"></i> Cancel</a>
     <button id="helpBtn" class="link-button" onclick="openGuide()"><i class="fa-solid fa-question"></i></button>
@@ -102,14 +119,18 @@
     const totalAmountLabel = document.getElementById("totalAmount");
 
     function loadCartFromStorage() {
-      const counts = JSON.parse(sessionStorage.getItem('passCountsCart') || '{}');
-      let total = JSON.parse(sessionStorage.getItem('totalPassAmountCart') || 0);
+      const counts = JSON.parse(sessionStorage.getItem('passCounts') || '{}');
+      let total = JSON.parse(sessionStorage.getItem('totalPassAmount') || 0);
 
       totalAmountLabel.textContent = `Total Amount: $${total.toFixed(2)}`;
     }
 
     function openGuide() {
-      alert("This is where the help modal would appear!");
+      document.getElementById('guidePopup').style.display = 'block';
+    }
+
+    function closeGuide() {
+      document.getElementById('guidePopup').style.display = 'none';
     }
 
 

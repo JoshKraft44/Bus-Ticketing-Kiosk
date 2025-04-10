@@ -129,6 +129,7 @@
             document.getElementById(elementId).textContent = ticketCounts[row] || 0;
             }
         }
+        document.getElementById("receipt-total").textContent = `$${parseFloat(totalTicketAmount).toFixed(2)}`;
     } else if (purchaseType === 'pass') {
         // Display pass type
         document.getElementById("receipt-type").textContent = `Pass Type: ${passType}`;
@@ -141,10 +142,8 @@
             document.getElementById(elementId).textContent = passCounts[row] || 0;
             }
         }
+        document.getElementById("receipt-total").textContent = `${parseFloat(totalPassAmount).toFixed(2)}`;
     }
-
-// Display total amount
-document.getElementById("receipt-total").textContent = `$${parseFloat(totalTicketAmount).toFixed(2)}`;
   </script>
   
 </body>

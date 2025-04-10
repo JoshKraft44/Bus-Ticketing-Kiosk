@@ -112,7 +112,12 @@
       align-items: center;
       justify-content: center;
     }
-
+    #guidePopup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
     hr {
       width: 90%;
       margin: 40px auto;
@@ -191,11 +196,29 @@
   </div>
 </div>
 
-<!-- Guide Popup (optional) -->
+<!-- Updated Guide Popup -->
 <div id="guidePopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:80vw; max-height:80vh; overflow:auto; padding:30px; background:white; border:2px solid black; z-index:1000; font-size:18px; line-height:1.5;">
-  <h2>Bus Ticketing Kiosk: Quick Guide</h2>
-  <p>Welcome! This kiosk helps you easily purchase bus tickets, reload transit cards, or check schedules.</p>
-  <button onclick="closeGuide()" style="margin-top: 20px;">Close</button>
+  <h2 style="font-size: 26px; margin-bottom: 10px;">Bus Ticketing Kiosk: Quick Guide</h2>
+  
+  <p>This screen allows you to select how many tickets you’d like to purchase based on the type of rider.</p>
+
+  <h3 style="font-size: 22px;">Step-by-Step Instructions:</h3>
+  <ol>
+    <li><strong>Identify your rider type:</strong> Choose between Adult (18–65), Senior (65+), Student (with ID), or Minor (under 18).</li>
+    <li><strong>Adjust the quantity:</strong> Use the <strong>( + )</strong> button to add tickets or <strong>( – )</strong> to reduce the count.</li>
+    <li><strong>Watch your total:</strong> The Total Amount at the bottom will automatically update based on your selections.</li>
+    <li><strong>Proceed:</strong> Once you’ve selected all the needed tickets, click "Add to Cart" or "Pay" depending on your next step.</li>
+  </ol>
+
+  <h3 style="font-size: 22px;">Helpful Tips:</h3>
+  <ul>
+    <li>Click the “?” button anytime to open this guide again.</li>
+    <li>If you're not sure about pricing, totals are calculated based on city-standard rates shown per user group.</li>
+    <li>Click “Add to Cart” if you wish to continue adding more ticket types.</li>
+    <li>Click “Pay” to go directly to payment.</li>
+  </ul>
+
+  <button onclick="closeGuide()" style="margin-top: 20px; font-size: 18px; padding: 10px 20px;">Close</button>
 </div>
 
 <!-- JS Logic -->
