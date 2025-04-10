@@ -79,5 +79,73 @@
 
     <footer>Have a nice day!</footer>
   </div>
+  <div style="margin-top: 40px; width: 100%; text-align: center;">
+    <h2 style="font-size: 28px;">🎟️ Receipt</h2>
+    <p id="receipt-type" style="font-size: 22px; font-weight: bold;">Ticket/Pass Type: </p>
+  
+    <div style="margin-top: 20px; font-size: 22px;">
+      <p><strong>Adult:</strong> <span id="receipt-adult">0</span></p>
+      <p><strong>Senior:</strong> <span id="receipt-senior">0</span></p>
+      <p><strong>Student:</strong> <span id="receipt-student">0</span></p>
+      <p><strong>Minor:</strong> <span id="receipt-minor">0</span></p>
+      <p><strong>Total Paid:</strong> $<span id="receipt-total">0.00</span></p>
+    </div>
+  
+    <p style="font-size: 20px; margin-top: 20px;">
+      Please collect your tickets or passes and receipt from the dispenser below.
+    </p>
+  
+    <a href="PressToBegin.html" class="link-button" style="margin-top: 30px; width: 300px;">Done</a>
+  </div>
+  <script>
+   // Load and display receipt info from sessionStorage
+    const purchaseType = sessionStorage.getItem('purchaseType'); // 'ticket' or 'pass'
+    const totalTicketAmount = sessionStorage.getItem('totalAmount') || "0.00"; // Total cost
+    const ticketType = sessionStorage.getItem('ticketType'); // e.g., 'Single Use', 'Round Trip'
+    const passType = sessionStorage.getItem('passType'); // e.g., 'Daily', 'Monthly', 'Yearly'
+    const totalPassAmount = sessionStorage.getItem('totalPassAmount') || "0.00";
+    const ticketCounts = JSON.parse(sessionStorage.getItem('ticketCounts'));
+    const passCounts = JSON.parse(sessionStorage.getItem('passCounts'));
+    // Map rows to user groups
+    const userGroupMap = {
+    "row-1": "Adult",
+    "row-2": "Senior",
+    "row-3": "Student",
+    "row-4": "Minor"
+    };
+
+    // Display receipt based on purchase type
+    if (purchaseType === 'ticket') {
+        // Display ticket type
+        document.getElementById("receipt-type").textContent = `Ticket Type: ${ticketType}`;
+
+        // Display individual ticket counts
+        for (const row in ticketCounts) {
+            const userGroup = userGroupMap[row];
+            console.log(userGroup)
+            if (userGroup) {
+            const elementId = `receipt-${userGroup.toLowerCase()}`; // e.g., 'receipt-adult'
+            console.log(elementId)
+            document.getElementById(elementId).textContent = ticketCounts[row] || 0;
+            }
+        }
+    } else if (purchaseType === 'pass') {
+        // Display pass type
+        document.getElementById("receipt-type").textContent = `Pass Type: ${passType}`;
+
+        // Display individual pass counts
+        for (const row in passCounts) {
+            const userGroup = userGroupMap[row];
+            if (userGroup) {
+            const elementId = `receipt-${userGroup.toLowerCase()}`; // e.g., 'receipt-adult'
+            document.getElementById(elementId).textContent = passCounts[row] || 0;
+            }
+        }
+    }
+
+// Display total amount
+document.getElementById("receipt-total").textContent = `$${parseFloat(totalTicketAmount).toFixed(2)}`;
+  </script>
+  
 </body>
 </html>
