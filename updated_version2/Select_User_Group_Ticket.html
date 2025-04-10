@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Select User Group</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+    }
+    .center-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-right: 8%;
+    }
+    img {
+      width: 220px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .btn-group-2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+      gap: 15px;
+      font-size: 22px;
+    }
+
+    .label-text {
+      font-weight: 500;
+      min-width: 300px;
+      text-align: right;
+    }
+
+    .btn-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: #e0e0e0;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-circle:hover {
+      background: #d1d1d1;
+    }
+
+    .quantity {
+      font-size: 26px;
+      width: 30px;
+    }
+
+    .total {
+      font-size: 28px;
+      margin: 30px 0;
+      font-weight: bold;
+    }
+
+    .btn-action-group {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .action-btn {
+      font-size: 20px;
+      padding: 20px 35px;
+      background: #ffffff;
+      border: 2px solid #333;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #000;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .action-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    .help-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    hr {
+      width: 90%;
+      margin: 40px auto;
+      border: none;
+      border-top: 2px solid #ddd;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .label-text {
+        font-size: 18px;
+        min-width: 180px;
+      }
+
+      .btn-circle {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+      }
+
+      .action-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img src="coc-logo.svg" alt="City of Calgary Logo">
+  <h1>Select User Group</h1>
+  <div class="center-wrapper">
+    <div class="btn-group-2 row-1">
+      <div class="label-text">Adult (age 18-65)</div>
+      <button class="btn-circle minus">-</button>
+      <span class="quantity">0</span>
+      <button class="btn-circle plus">+</button>
+    </div>
+  
+    <div class="btn-group-2 row-2">
+      <div class="label-text">Senior (age 65+)</div>
+      <button class="btn-circle minus">-</button>
+      <span class="quantity">0</span>
+      <button class="btn-circle plus">+</button>
+    </div>
+  
+    <div class="btn-group-2 row-3">
+      <div class="label-text">Student (with ID)</div>
+      <button class="btn-circle minus">-</button>
+      <span class="quantity">0</span>
+      <button class="btn-circle plus">+</button>
+    </div>
+  
+    <div class="btn-group-2 row-4">
+      <div class="label-text">Minor (age 0–17)</div>
+      <button class="btn-circle minus">-</button>
+      <span class="quantity">0</span>
+      <button class="btn-circle plus">+</button>
+    </div>
+  </div>
+  
+
+  <div id="totalAmount" class="total">Total Amount: $0.00</div>
+
+  <div class="btn-action-group">
+    <a class="action-btn" href="#" onclick="handleCheckout()"><i class="fa-solid fa-credit-card"></i> Pay</a>
+  </div>
+
+  <hr>
+
+  <div class="btn-action-group">
+    <a class="action-btn" href="Select_Ticket_Type.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <a class="action-btn" href="PressToBegin.html"><i class="fa-solid fa-xmark"></i> Cancel</a>
+    <button class="action-btn help-btn" onclick="openGuide()"><i class="fa-solid fa-question"></i></button>
+  </div>
+</div>
+
+<!-- Guide Popup (optional) -->
+<div id="guidePopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:80vw; max-height:80vh; overflow:auto; padding:30px; background:white; border:2px solid black; z-index:1000; font-size:18px; line-height:1.5;">
+  <h2>Bus Ticketing Kiosk: Quick Guide</h2>
+  <p>Welcome! This kiosk helps you easily purchase bus tickets, reload transit cards, or check schedules.</p>
+  <button onclick="closeGuide()" style="margin-top: 20px;">Close</button>
+</div>
+
+<!-- JS Logic -->
+<script>
+  const prices = {
+    single: {
+      "row-1": 3.50,  // Adult single
+      "row-2": 2.25,  // Senior single
+      "row-3": 2.50,  // Student single
+      "row-4": 1.75   // Minor single
+    },
+    roundTrip: {
+      "row-1": 6.00,  // Adult round-trip (discounted from 7.00)
+      "row-2": 3.75,  // Senior round-trip (discounted from 4.50)
+      "row-3": 4.25,  // Student round-trip (discounted from 5.00)
+      "row-4": 2.75   // Minor round-trip (discounted from 3.50)
+    }
+  };
+
+  function getPrice(row) {
+    const ticketType = sessionStorage.getItem('ticketType') || 'single';
+    return prices[ticketType][row];
+  }
+
+  function updateTotalAmountLabel() {
+    let total = 0;
+    const counts = {};
+
+    document.querySelectorAll('.btn-group-2').forEach(group => {
+      const row = Array.from(group.classList).find(c => c.startsWith("row-"));
+      const quantity = parseInt(group.querySelector('.quantity').textContent);
+      const price = getPrice(row);
+      counts[row] = quantity;
+      total += quantity * price;
+    });
+
+    document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
+    sessionStorage.setItem('ticketCounts', JSON.stringify(counts));
+    sessionStorage.setItem('totalAmount', total.toFixed(2));
+  }
+
+  document.querySelectorAll('.btn-group-2').forEach(group => {
+    const quantityEl = group.querySelector('.quantity');
+    let quantity = parseInt(quantityEl.textContent);
+    const minusBtn = group.querySelector('.minus');
+    const plusBtn = group.querySelector('.plus');
+
+    minusBtn.addEventListener('click', () => {
+      if (quantity > 0) {
+        quantity--;
+        quantityEl.textContent = quantity;
+        updateTotalAmountLabel();
+      }
+    });
+
+    plusBtn.addEventListener('click', () => {
+      quantity++;
+      quantityEl.textContent = quantity;
+      updateTotalAmountLabel();
+    });
+  });
+
+  function handleCheckout() {
+    const studentCount = parseInt(document.querySelector('.row-3 .quantity').textContent);
+    if (studentCount > 0) {
+      localStorage.setItem('requiresStudentVerification', 'true');
+      window.location.href = "Student_Verification.html";
+    } else {
+      window.location.href = "Confirm_Ticket_Payment.html";
+    }
+  }
+
+  function openGuide() {
+    document.getElementById('guidePopup').style.display = 'block';
+  }
+
+  function closeGuide() {
+    document.getElementById('guidePopup').style.display = 'none';
+  }
+
+  // Initial
+  updateTotalAmountLabel();
+</script>
+
+</body>
+</html>
