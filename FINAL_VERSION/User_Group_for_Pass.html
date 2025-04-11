@@ -250,7 +250,7 @@
     <a href="Select_Pass_Type.html" class="btn-icon" title="Back">
         <i class="fas fa-arrow-left"></i>
     </a>
-    <a id="cancel-btn" href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
+    <a href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
     <button class="btn-icon" onclick="openGuide()" title="Help">
@@ -346,42 +346,45 @@
 
   document.querySelectorAll('.btn-group-2').forEach(group => {
     const quantityEl = group.querySelector('.quantity');
-    let quantity = parseInt(quantityEl.textContent);
     const minusBtn = group.querySelector('.minus');
     const plusBtn = group.querySelector('.plus');
 
     minusBtn.addEventListener('click', () => {
-      if (quantity > 0) {
-        quantity--;
-        quantityEl.textContent = quantity;
-        updateTotalAmountLabel();
-      }
+        let quantity = parseInt(quantityEl.textContent);
+        if (quantity > 0) {
+            quantity--;
+            quantityEl.textContent = quantity;
+            updateTotalAmountLabel();
+        }
     });
 
     plusBtn.addEventListener('click', () => {
-      quantity++;
-      quantityEl.textContent = quantity;
-      updateTotalAmountLabel();
+        let quantity = parseInt(quantityEl.textContent);
+        quantity++;
+        quantityEl.textContent = quantity;
+        updateTotalAmountLabel();
     });
   });
 
   function handleAddToCart() {
+    // Check if any passes are selected
     let totalQuantity = 0;
     document.querySelectorAll('.btn-group-2').forEach(group => {
         totalQuantity += parseInt(group.querySelector('.quantity').textContent);
     });
 
     if (totalQuantity === 0) {
-
-       document.getElementById('errorMessage').style.display = 'block';
+        // Show error message instead of alert
+        document.getElementById('errorMessage').style.display = 'block';
         return;
     }
 
+    // Hide error message if passes are selected
     document.getElementById('errorMessage').style.display = 'none';
 
     const studentCount = parseInt(document.querySelector('.row-3 .quantity').textContent);
     if (studentCount > 0) {
-
+        // Store current pass counts and total in sessionStorage
         const counts = {};
         document.querySelectorAll('.btn-group-2').forEach(group => {
             const row = Array.from(group.classList).find(c => c.startsWith("row-"));
@@ -391,13 +394,14 @@
         sessionStorage.setItem('pendingPassCounts', JSON.stringify(counts));
         sessionStorage.setItem('pendingTotalPassAmount', document.getElementById('totalAmount').textContent.split('$')[1]);
         
-
+        // Redirect to student verification
         window.location.href = "Student_Verification.html";
     } else {
         window.location.href = "Pass_Cart.html";
     }
   }
 
+  // Add this to hide error message when user starts selecting passes
   document.querySelectorAll('.btn-circle').forEach(button => {
     button.addEventListener('click', () => {
         document.getElementById('errorMessage').style.display = 'none';
@@ -411,22 +415,24 @@
   function closeGuide() {
     document.getElementById('guidePopup').style.display = 'none';
   }
-
+  // Load values from sessionStorage on page load
   window.addEventListener('DOMContentLoaded', () => {
     const savedCounts = JSON.parse(sessionStorage.getItem('passCountsCart'));
     const total = parseFloat(sessionStorage.getItem('totalPassAmountCart')) || 0;
-    for (const row in savedCounts) {
-      const group = document.querySelector(`.${row}`);
-      if (!group) continue;
+    
+    if (savedCounts) {
+        for (const row in savedCounts) {
+            const group = document.querySelector(`.${row}`);
+            if (!group) continue;
 
-      const quantityElement = group.querySelector('.quantity');
-      quantityElement.textContent = savedCounts[row];
-      
+            const quantityElement = group.querySelector('.quantity');
+            quantityElement.textContent = savedCounts[row];
+        }
+        document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
     }
-    document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
-
+    updateTotalAmountLabel(); // Update the total after loading saved values
   });
-
+  // Initial
   updateTotalAmountLabel();
 </script>
 
