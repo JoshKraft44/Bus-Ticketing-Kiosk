@@ -138,9 +138,9 @@
 
   <div class="divider"></div>
   <div class="btn-bar">
-    <!-- <a href="Select_Ticket_Type.html" class="btn-icon" title="Back">
-        <i class="fas fa-arrow-left"></i>
-    </a> -->
+      <a href = # class="btn-icon" title="Back" id="back-btn">
+          <i class="fas fa-arrow-left"></i>
+      </a>
     
     <a href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
       <i class="fas fa-times" style="color: #9c2121;"></i>
@@ -163,6 +163,18 @@
   </div>
 
   <script>
+    const ticketBool = sessionStorage.getItem('ticket_bool');
+    const passBool = sessionStorage.getItem('pass_bool');
+    
+    document.getElementById('back-btn').addEventListener('click', function () {
+
+      if (ticketBool === 'true') {
+          window.location.href = "Ticket_Cart.html";
+      } if (passBool === 'true') {
+          window.location.href = "Pass_Cart.html";
+      } 
+    });
+
     function openGuide() {
       document.getElementById('guidePopup').style.display = 'block';
     }

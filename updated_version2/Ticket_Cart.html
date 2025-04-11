@@ -109,8 +109,7 @@
 
   <div class="button-row">
     <a class="link-button" href="Select_User_Group_Ticket.html"><i class="fa-solid fa-plus"></i> Add More Items</a>
-    <!-- <a class="link-button" href="Confirm_Ticket_Payment.html"><i class="fa-solid fa-credit-card"></i> Checkout</a> -->
-    <a class="link-button" href="Payment_Methods.html"><i class="fa-solid fa-credit-card"></i> Checkout</a>
+    <a id="ticket-btn" class="link-button" href="Payment_Methods.html"><i class="fa-solid fa-credit-card"></i> Checkout</a>
   </div>
 
   <div class="divider"></div>
@@ -134,11 +133,20 @@
   </div>
 
   <script>
+    const ticketType = sessionStorage.getItem('ticketType') || 'single';
     const prices = {
+      single: {
         "row-1": 3.50,
         "row-2": 2.25,
         "row-3": 2.50,
         "row-4": 1.75
+      },
+      roundTrip: {
+        "row-1": 6.00,  
+        "row-2": 3.75,  
+        "row-3": 4.25, 
+        "row-4": 2.75   
+      }
     };
     const rowLabels = {
         "row-1": "Adult (age 18–65)",
@@ -146,6 +154,12 @@
         "row-3": "Student (with ID)",
         "row-4": "Minor (age 0–17)"
     };
+    
+    document.getElementById('ticket-btn').addEventListener('click', function () {
+    sessionStorage.setItem('ticket_bool', 'true');
+    sessionStorage.setItem('pass_bool', 'false');
+    });
+
     function renderCartItems() {
         const container = document.getElementById('cartItemsContainer');
         container.innerHTML = '';
@@ -157,7 +171,7 @@
         const quantity = ticketCounts[row];
         if (quantity > 0) {
             const label = rowLabels[row];
-            const price = prices[row];
+            const price = prices[ticketType][row];
             total += quantity * price;
 
             const item = document.createElement('div');
