@@ -361,6 +361,17 @@
   });
 
   function handleAddToCart() {
+    // Check if any passes are selected
+    let totalQuantity = 0;
+    document.querySelectorAll('.btn-group-2').forEach(group => {
+        totalQuantity += parseInt(group.querySelector('.quantity').textContent);
+    });
+
+    if (totalQuantity === 0) {
+        alert('Please select at least one pass before proceeding to cart.');
+        return;
+    }
+
     const studentCount = parseInt(document.querySelector('.row-3 .quantity').textContent);
     if (studentCount > 0) {
         // Store current pass counts and total in sessionStorage
