@@ -180,7 +180,7 @@
       <button class="btn-number" data-num="9">9</button>
       <button class="btn-number" data-num="0">0</button>
     </div>
-    <a class="link-button" href="Insert_Transit_Card.html" style="margin-top: 20px;">Confirm and Pay</a>
+    <a class="link-button" onclick="validateAndProceed(event)" href="Insert_Transit_Card.html" style="margin-top: 20px;">Confirm and Pay</a>
   </div>
 
   <hr />
@@ -203,7 +203,7 @@
       <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
     <h3>How to Use the Kiosk:</h3>
     <ol>
-      <li><strong>After pressing “Press to Begin” on the start screen</strong>
+      <li><strong>After pressing "Press to Begin" on the start screen</strong>
         <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
       <li><strong>Select Ticket|Pass Type</strong>
         <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
@@ -246,6 +246,21 @@
 
     function closeGuide() {
       document.getElementById('guidePopup').style.display = 'none';
+    }
+
+    function validateAndProceed(event) {
+        event.preventDefault(); // Prevent default navigation
+        const input = document.getElementById('amount');
+        const amount = parseFloat(input.value);
+
+        if (!input.value || amount <= 0) {
+            alert('Please enter a valid amount greater than $0');
+            return;
+        }
+
+        // If validation passes, store the amount and proceed
+        sessionStorage.setItem('reloadAmount', amount);
+        window.location.href = 'Insert_Transit_Card.html';
     }
   </script>
 </body>
