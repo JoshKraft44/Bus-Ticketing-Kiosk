@@ -15,12 +15,11 @@
     }
         header {
         text-align: center;
-        padding: 40px 20px 10px;
         }
 
         header img {
-        width: 180px;
-        margin-bottom: 10px;
+          width: 300px;
+          margin-top: 20px;
         }
 
         h1 {
@@ -58,6 +57,12 @@
             flex-wrap: wrap;
             margin-bottom: 60px;
         }
+
+        .divider {
+          width: 40%;
+          margin: 30px auto;
+          border-top: 2px solid #ccc;
+        }
         
         .icon-button {
         width: 60px;
@@ -91,14 +96,17 @@
 <body>
     <header>
         <img src="coc-logo.svg" alt="Calgary Logo" />
-        <h1>Insert Transit Card Below to Reload</h1>
+        <h1>Insert Transit Card to Reload</h1>
     </header>
 <a href="Payment_Methods.html" style="text-decoration: none;">
 <div class="container">
-<img src="arrow_down.png" style="align-items: center; width: 200px;"/>
 <img src="transit_card.png" style="align-items: center; width: 300px;"/>
+<img src="arrow_down.png" style="align-items: center; width: 200px;"/>
 </div>
 </a>
+
+<div class="divider"></div>
+
 <div class="btn-group">
     <a href="Enter_Reload_Amount.html" class="icon-button" title="Back">
       <i class="fas fa-arrow-left"></i>
