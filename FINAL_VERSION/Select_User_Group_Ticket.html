@@ -239,7 +239,7 @@
   <a href="Select_Ticket_Type.html" class="icon-button" title="Back">
     <i class="fas fa-arrow-left"></i>
   </a>
-  <a id="cancel-btn" href="PressToBegin.html" class="icon-button" title="Cancel">
+  <a href="PressToBegin.html" class="icon-button" title="Cancel">
     <i class="fas fa-times" style="color: #9c2121;"></i>
   </a>
   <button class="icon-button" onclick="openGuide()" title="Help">
@@ -299,59 +299,44 @@
   }
 
   function updateTotalAmountLabel() {
-    
     let total = 0;
     const counts = {};
 
     document.querySelectorAll('.btn-group-2').forEach(group => {
-      const row = Array.from(group.classList).find(c => c.startsWith("row-"));
-      const quantity = parseInt(group.querySelector('.quantity').textContent);
-      const price = getPrice(row);
-      counts[row] = quantity;
-      total += quantity * price;
+        const row = Array.from(group.classList).find(c => c.startsWith("row-"));
+        const quantity = parseInt(group.querySelector('.quantity').textContent);
+        const price = getPrice(row);
+        counts[row] = quantity;
+        total += quantity * price;
     });
 
     document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
+    // Store the current state
     sessionStorage.setItem('ticketCounts', JSON.stringify(counts));
     sessionStorage.setItem('totalAmount', total.toFixed(2));
   }
 
-  document.querySelectorAll('.btn-group-2').forEach(group => {
-    const quantityEl = group.querySelector('.quantity');
-    let quantity = parseInt(quantityEl.textContent);
-    const minusBtn = group.querySelector('.minus');
-    const plusBtn = group.querySelector('.plus');
-
-    minusBtn.addEventListener('click', () => {
-      if (quantity > 0) {
-        quantity--;
-        quantityEl.textContent = quantity;
-        updateTotalAmountLabel();
-      }
-    });
-
-    plusBtn.addEventListener('click', () => {
-      quantity++;
-      quantityEl.textContent = quantity;
-      updateTotalAmountLabel();
-    });
-  });
-
   function handleCheckout() {
-    // Check if any tickets are selected
     let totalQuantity = 0;
+    const counts = {};
+    
     document.querySelectorAll('.btn-group-2').forEach(group => {
-        totalQuantity += parseInt(group.querySelector('.quantity').textContent);
+        const row = Array.from(group.classList).find(c => c.startsWith("row-"));
+        const quantity = parseInt(group.querySelector('.quantity').textContent);
+        counts[row] = quantity;
+        totalQuantity += quantity;
     });
 
     if (totalQuantity === 0) {
-        // Show error message instead of alert
         document.getElementById('errorMessage').style.display = 'block';
         return;
     }
 
-    // Hide error message if tickets are selected
     document.getElementById('errorMessage').style.display = 'none';
+
+    // Store the current selections in cart storage
+    sessionStorage.setItem('ticketCountsCart', JSON.stringify(counts));
+    sessionStorage.setItem('totalTicketAmountCart', document.getElementById('totalAmount').textContent.split('$')[1]);
 
     const studentCount = parseInt(document.querySelector('.row-3 .quantity').textContent);
     if (studentCount > 0) {
@@ -362,10 +347,48 @@
     }
   }
 
-  // Add this to hide error message when user starts selecting tickets
-  document.querySelectorAll('.btn-circle').forEach(button => {
-    button.addEventListener('click', () => {
-        document.getElementById('errorMessage').style.display = 'none';
+  // Load saved values when the page loads
+  window.addEventListener('DOMContentLoaded', () => {
+    // Try to load from cart storage first
+    let savedCounts = JSON.parse(sessionStorage.getItem('ticketCountsCart'));
+    let total = parseFloat(sessionStorage.getItem('totalTicketAmountCart'));
+
+    if (savedCounts) {
+        for (const row in savedCounts) {
+            const group = document.querySelector(`.${row}`);
+            if (!group) continue;
+
+            const quantityElement = group.querySelector('.quantity');
+            quantityElement.textContent = savedCounts[row];
+        }
+        if (total) {
+            document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
+        }
+    }
+    
+    updateTotalAmountLabel(); // Update the total after loading saved values
+  });
+
+  // Update the button event listeners
+  document.querySelectorAll('.btn-group-2').forEach(group => {
+    const quantityEl = group.querySelector('.quantity');
+    const minusBtn = group.querySelector('.minus');
+    const plusBtn = group.querySelector('.plus');
+
+    minusBtn.addEventListener('click', () => {
+        let quantity = parseInt(quantityEl.textContent);
+        if (quantity > 0) {
+            quantity--;
+            quantityEl.textContent = quantity;
+            updateTotalAmountLabel();
+        }
+    });
+
+    plusBtn.addEventListener('click', () => {
+        let quantity = parseInt(quantityEl.textContent);
+        quantity++;
+        quantityEl.textContent = quantity;
+        updateTotalAmountLabel();
     });
   });
 
