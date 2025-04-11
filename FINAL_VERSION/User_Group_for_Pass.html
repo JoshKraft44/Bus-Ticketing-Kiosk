@@ -235,7 +235,7 @@
   <div id="totalAmount" class="total">Total Amount: $0.00</div>
 
   <div class="btn-action-group">
-    <a class="action-btn" href="Pass_Cart.html"><i class="fa-solid fa-cart-plus"></i> Add to Cart</a>
+    <a class="action-btn" href="#" onclick="handleAddToCart()"><i class="fa-solid fa-cart-plus"></i> Add to Cart</a>
     <!-- <a class="action-btn" href="#" onclick="handleCheckout()"><i class="fa-solid fa-credit-card"></i> Pay</a> -->
   </div>
 
@@ -261,7 +261,7 @@
       <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
     <h3>How to Use the Kiosk</h3>
     <ol>
-      <li><strong>After pressing “Press to Begin” on the start screen</strong>
+      <li><strong>After pressing "Press to Begin" on the start screen</strong>
         <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
       <li><strong>Select Ticket|Pass Type</strong>
         <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
@@ -360,14 +360,23 @@
     });
   });
 
-  function handleCheckout() {
+  function handleAddToCart() {
     const studentCount = parseInt(document.querySelector('.row-3 .quantity').textContent);
     if (studentCount > 0) {
-      localStorage.setItem('requiresStudentVerification', 'true');
-      window.location.href = "Student_Verification.html";
+        // Store current pass counts and total in sessionStorage
+        const counts = {};
+        document.querySelectorAll('.btn-group-2').forEach(group => {
+            const row = Array.from(group.classList).find(c => c.startsWith("row-"));
+            const quantity = parseInt(group.querySelector('.quantity').textContent);
+            counts[row] = quantity;
+        });
+        sessionStorage.setItem('pendingPassCounts', JSON.stringify(counts));
+        sessionStorage.setItem('pendingTotalPassAmount', document.getElementById('totalAmount').textContent.split('$')[1]);
+        
+        // Redirect to student verification
+        window.location.href = "Student_Verification.html";
     } else {
-      // window.location.href = "Confirm_Pass_Payment.html";
-      window.location.href = "Pass_Cart.html";
+        window.location.href = "Pass_Cart.html";
     }
   }
 
