@@ -190,6 +190,12 @@
 <div class="container">
   <img src="coc-logo.svg" alt="City of Calgary Logo">
   <h1>Select Tickets</h1>
+  
+  <!-- Add error message div below the heading -->
+  <div id="errorMessage" style="color: red; font-size: 18px; margin: 10px 0; display: none;">
+    Please select at least one ticket before proceeding to cart.
+  </div>
+  
   <div class="center-wrapper">
     <div class="btn-group-2 row-1">
       <div class="label-text">Adult (age 18-65)</div>
@@ -339,9 +345,13 @@
     });
 
     if (totalQuantity === 0) {
-        alert('Please select at least one ticket before proceeding to cart.');
+        // Show error message instead of alert
+        document.getElementById('errorMessage').style.display = 'block';
         return;
     }
+
+    // Hide error message if tickets are selected
+    document.getElementById('errorMessage').style.display = 'none';
 
     const studentCount = parseInt(document.querySelector('.row-3 .quantity').textContent);
     if (studentCount > 0) {
@@ -351,6 +361,13 @@
         window.location.href = "Ticket_Cart.html";
     }
   }
+
+  // Add this to hide error message when user starts selecting tickets
+  document.querySelectorAll('.btn-circle').forEach(button => {
+    button.addEventListener('click', () => {
+        document.getElementById('errorMessage').style.display = 'none';
+    });
+  });
 
   function openGuide() {
     document.getElementById('guidePopup').style.display = 'block';
