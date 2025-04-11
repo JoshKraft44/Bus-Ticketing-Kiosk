@@ -184,7 +184,7 @@
 
   <div class="btn-action-group">
     <a class="action-btn" href="Pass_Cart.html"><i class="fa-solid fa-cart-plus"></i> Add to Cart</a>
-    <a class="action-btn" href="#" onclick="handleCheckout()"><i class="fa-solid fa-credit-card"></i> Pay</a>
+    <!-- <a class="action-btn" href="#" onclick="handleCheckout()"><i class="fa-solid fa-credit-card"></i> Pay</a> -->
   </div>
 
   <hr>
@@ -304,7 +304,8 @@
       localStorage.setItem('requiresStudentVerification', 'true');
       window.location.href = "Student_Verification.html";
     } else {
-      window.location.href = "Confirm_Pass_Payment.html";
+      // window.location.href = "Confirm_Pass_Payment.html";
+      window.location.href = "Pass_Cart.html";
     }
   }
 

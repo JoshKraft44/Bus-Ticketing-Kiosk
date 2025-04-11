@@ -103,15 +103,41 @@
       background-color: #f0f0f0;
     }
 
-    .help-btn {
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .icon-button {
       width: 60px;
       height: 60px;
-      border-radius: 12px;
-      font-size: 28px;
+      border: 2px solid #333;
+      border-radius: 50%;
+      background: white;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
     }
+
+    .icon-button:hover {
+      background-color: #eee;
+    }
+
+    .small-button {
+      font-size: 20px;
+      padding: 12px 40px;
+      width: auto;
+    }
+
+
     #guidePopup button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -183,17 +209,23 @@
   <div id="totalAmount" class="total">Total Amount: $0.00</div>
 
   <div class="btn-action-group">
-    <a class="action-btn" href="#" onclick="handleCheckout()"><i class="fa-solid fa-credit-card"></i> Pay</a>
+    <a class="action-btn" href="#" onclick="handleCheckout()"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</a>
   </div>
 
   <hr>
 
-  <div class="btn-action-group">
-    <a class="action-btn" href="Select_Ticket_Type.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
-    <a class="action-btn" href="PressToBegin.html"><i class="fa-solid fa-xmark"></i> Cancel</a>
-    <button class="action-btn help-btn" onclick="openGuide()"><i class="fa-solid fa-question"></i></button>
-  </div>
+<div class="btn-group">
+  <a href="Select_Ticket_Type.html" class="icon-button" title="Back">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+  <a href="PressToBegin.html" class="icon-button" title="Cancel">
+    <i class="fas fa-times" style="color: #9c2121;"></i>
+  </a>
+  <button class="icon-button" onclick="openGuide()" title="Help">
+    <i class="fas fa-question-circle"></i>
+  </button>
 </div>
+</main>
 
 <!-- Updated Guide Popup -->
 <div id="guidePopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:80vw; max-height:80vh; overflow:auto; padding:30px; background:white; border:2px solid black; z-index:1000; font-size:18px; line-height:1.5;">
@@ -244,6 +276,7 @@
   }
 
   function updateTotalAmountLabel() {
+    
     let total = 0;
     const counts = {};
 
@@ -287,7 +320,8 @@
       localStorage.setItem('requiresStudentVerification', 'true');
       window.location.href = "Student_Verification.html";
     } else {
-      window.location.href = "Confirm_Ticket_Payment.html";
+      // window.location.href = "Confirm_Ticket_Payment.html";
+      window.location.href = "Ticket_Cart.html";
     }
   }
 
