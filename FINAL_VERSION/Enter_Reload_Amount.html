@@ -192,7 +192,7 @@
     <a href="Select_an_Option.html" class="icon-button" title="Back">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <a href="PressToBegin.html" class="icon-button" title="Cancel">
+    <a id="cancel-btn" href="PressToBegin.html" class="icon-button" title="Cancel">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
     <button class="icon-button" onclick="openGuide()" title="Help">
@@ -237,8 +237,6 @@
       });
     });
 
-    
-
     document.getElementById('backspace').addEventListener('click', function () {
       const input = document.getElementById('amount');
       input.value = input.value.slice(0, -1);
@@ -253,7 +251,7 @@
     }
 
     function validateAndProceed(event) {
-        event.preventDefault(); // Prevent default navigation
+        event.preventDefault();
         const input = document.getElementById('amount');
         const amount = parseFloat(input.value);
 
@@ -264,7 +262,7 @@
 
         document.getElementById('errorMessage').style.display = 'none';
         
-        sessionStorage.setItem('reloadAmount', amount);
+        sessionStorage.setItem('reloadAmount', (amount));
         window.location.href = 'Insert_Transit_Card.html';
     }
   </script>

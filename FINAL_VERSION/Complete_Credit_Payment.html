@@ -183,7 +183,7 @@
       <a href="Payment_Methods.html" class="btn-icon" title="Back">
           <i class="fas fa-arrow-left"></i>
       </a>
-      <a href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
+      <a id="cancel-btn" href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
         <i class="fas fa-times" style="color: #9c2121;"></i>
       </a>
 
@@ -191,15 +191,21 @@
   </div>
 
   <script>
-    // Load dynamic cost
     
     const purchaseType = sessionStorage.getItem('purchaseType'); // 'ticket' or 'pass'
+
+
     let total = 0;
     if(purchaseType == 'pass'){
         total = sessionStorage.getItem("totalPassAmount") || "0.00";
     }else{
         total = sessionStorage.getItem("totalAmount") || "0.00";
     }
+
+    document.getElementById('cancel-btn').addEventListener('click', function () {
+      sessionStorage.setItem('totalPassAmount', '0');
+      sessionStorage.setItem('totalAmount', '0');
+    });
     
     document.getElementById("totalCost").textContent = `$${parseFloat(total).toFixed(2)}`;
   </script>

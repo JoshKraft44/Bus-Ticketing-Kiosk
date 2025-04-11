@@ -162,7 +162,7 @@
     <a href="Select_Pass_Type.html" class="btn-icon" title="Back">
         <i class="fas fa-arrow-left"></i>
     </a>
-    <a href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
+    <a id="cancel-btn" href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
     <button class="btn-icon" onclick="openGuide()" title="Help">
@@ -229,6 +229,7 @@
     document.getElementById('pass-btn').addEventListener('click', function () {
       sessionStorage.setItem('pass_bool', 'true');
       sessionStorage.setItem('ticket_bool', 'false');
+      sessionStorage.setItem('card_bool', 'false');
     });
 
       

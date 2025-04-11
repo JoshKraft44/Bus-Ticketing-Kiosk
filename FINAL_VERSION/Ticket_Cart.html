@@ -146,7 +146,7 @@
     <a href="Select_Ticket_Type.html" class="btn-icon" title="Back">
         <i class="fas fa-arrow-left"></i>
     </a>
-    <a href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
+    <a id="cancel-btn" href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
     <button class="btn-icon" onclick="openGuide()" title="Help">
@@ -208,6 +208,7 @@
     document.getElementById('ticket-btn').addEventListener('click', function () {
     sessionStorage.setItem('ticket_bool', 'true');
     sessionStorage.setItem('pass_bool', 'false');
+    sessionStorage.setItem('card_bool', 'false');
     });
 
     function renderCartItems() {

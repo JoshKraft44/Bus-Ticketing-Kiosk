@@ -122,7 +122,7 @@
         <img src="coc-logo.svg" alt="Calgary Logo" />
         <h1>Insert Transit Card to Reload</h1>
     </header>
-<a href="Payment_Methods.html" style="text-decoration: none;">
+<a id="card-btn" href="Payment_Methods.html" style="text-decoration: none;">
 <div class="container">
 <img src="transit_card.png" style="align-items: center; width: 300px;"/>
 <img src="arrow_down.png" style="align-items: center; width: 200px;"/>
@@ -135,7 +135,7 @@
     <a href="Enter_Reload_Amount.html" class="icon-button" title="Back">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <a href="PressToBegin.html" class="icon-button" title="Cancel">
+    <a id="cancel-btn" href="PressToBegin.html" class="icon-button" title="Cancel">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
     <button class="icon-button" onclick="openGuide()" title="Help">
@@ -170,7 +170,14 @@
           Enter student ID for discounts after pressing + on student.</li>
         <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
     </div>
+
 <script>
+    document.getElementById('card-btn').addEventListener('click', function () {
+      sessionStorage.setItem('pass_bool', 'false');
+      sessionStorage.setItem('ticket_bool', 'false');
+      sessionStorage.setItem('card_bool', 'true');
+    });
+
     function openGuide() {
         document.getElementById('guidePopup').style.display = 'block';
     }

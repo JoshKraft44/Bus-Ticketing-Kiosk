@@ -171,7 +171,7 @@
           <i class="fas fa-arrow-left"></i>
       </a>
     
-    <a href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
+    <a id="cancel-btn" href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
     <button class="btn-icon" onclick="openGuide()" title="Help">
@@ -210,13 +210,16 @@
   <script>
     const ticketBool = sessionStorage.getItem('ticket_bool');
     const passBool = sessionStorage.getItem('pass_bool');
-    
+    const cardBool = sessionStorage.getItem('card_bool');
+
     document.getElementById('back-btn').addEventListener('click', function () {
 
       if (ticketBool === 'true') {
           window.location.href = "Ticket_Cart.html";
       } if (passBool === 'true') {
           window.location.href = "Pass_Cart.html";
+      } if (cardBool === 'true') {
+          window.location.href = "Insert_Transit_Card.html";
       } 
     });
 
