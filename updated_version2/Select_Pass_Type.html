@@ -57,7 +57,7 @@
       margin-bottom: 60px;
     }
 
-    .icon-button {
+    .btn-icon {
       width: 60px;
       height: 60px;
       border: 2px solid #333;
@@ -70,6 +70,14 @@
       cursor: pointer;
       transition: background 0.3s;
       text-decoration: none;
+    }
+
+    .btn-icon i {
+      pointer-events: none;
+    }
+
+    .btn-icon:hover, .btn-back:hover {
+      background-color: #eee;
     }
 
 
@@ -129,13 +137,13 @@
 
 
   <div class="btn-group">
-    <a href="Purchase_Ticket_or_Pass.html" class="icon-button" title="Back">
+    <a href="Purchase_Ticket_or_Pass.html" class="btn-icon" title="Back">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <a href="PressToBegin.html" class="icon-button" title="Cancel">
+    <a href="PressToBegin.html" class="btn-icon" title="Cancel">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
-    <button class="icon-button" onclick="openGuide()" title="Help">
+    <button class="btn-icon" onclick="openGuide()" title="Help">
       <i class="fas fa-question-circle"></i>
     </button>
   </div>
