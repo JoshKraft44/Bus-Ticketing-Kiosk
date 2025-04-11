@@ -143,19 +143,33 @@
     </button>
   </div>
 
-  <div id="guidePopup">
+  <!-- When pressing the guide pop up gives instructions -->
+  <div id="guidePopup"> 
     <h2>Bus Ticketing Kiosk: Quick Guide</h2>
-    <p>Welcome! This kiosk helps you easily purchase bus tickets, reload transit cards, or check schedules. Here's how:</p>
+      <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
+    <h3>How to Use the Kiosk</h3>
     <ol>
-      <li><b>Start:</b> Choose an action: Ticket, Pass, Schedule, Map.</li>
-      <li><b>Type:</b> Choose single-use or round-trip.</li>
-      <li><b>User Group:</b> Adult, Senior, Student, Minor.</li>
-      <li><b>Payment:</b> Follow the instructions on screen.</li>
-      <li><b>Done:</b> Collect ticket and receipt. The kiosk will reset after a few minutes of inactivity.</li>
+      <li><strong>After pressing “Press to Begin” on the start screen</strong>
+        <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
+      <li><strong>Select Ticket|Pass Type</strong>
+        <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
+      (<strong>Note:</strong> If you select Transit Card, enter the amount you want to load onto a Transit card and then pay!)</li>
+      <li><strong>Choose Your User Group</strong>
+        <br/>Adult, Senior, Student, or Minor are the options. Use the +/- buttons to select quantity then press "Add to Cart". </li>
+      <li><strong>Review Cart</strong>
+        <br/>Double check the cart and then you can either add more items or checkout.</li>
+      <li><strong>Make a Payment</strong>
+        <br/>Can use cash or card. Follow on-screen instructions.</li>
+      <li><strong>Transaction Complete!</strong>
+        <br/>Take your ticket(s) and receipt. Additionally you can view the bus schedule/map or press "Done"</li>
     </ol>
-    <button onclick="closeGuide()">Close</button>
+    <h3>Additional Tips</h3>
+      <li><strong>Tourists:</strong> 
+        Change language on the start screen.</li>
+      <li><strong>Students:</strong> 
+        Enter student ID for discounts after pressing + on student.</li>
+      <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
   </div>
-
   <script>
     
     const totalAmount = sessionStorage.getItem('totalAmount');

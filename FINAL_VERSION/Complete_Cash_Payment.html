@@ -120,33 +120,6 @@
       border-top: 2px solid #ccc;
     }
 
-    .guide-button {
-      font-size: 22px;
-      width: 60px;
-      height: 60px;
-      border: 2px solid black;
-      border-radius: 50%;
-      background: white;
-      cursor: pointer;
-    }
-
-    .guide-popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vw;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 30px;
-      background: white;
-      border: 2px solid black;
-      z-index: 1000;
-      font-size: 18px;
-      line-height: 1.5;
-      text-align: left;
-    }
   </style>
 </head>
 <body>
@@ -178,34 +151,10 @@
     <a href="PressToBegin.html" class="btn-icon" title="Cancel" style="text-decoration: none;">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
-    <button class="btn-icon" onclick="openGuide()" title="Help">
-      <i class="fas fa-question-circle"></i>
-    </button>
   </div>
 
-  <!-- Guide Popup -->
-  <div id="guidePopup" class="guide-popup">
-    <h2>Bus Ticketing Kiosk: Quick Guide</h2>
-    <p>Welcome! This kiosk helps you easily purchase bus tickets, reload transit cards, or check schedules.</p>
-    <h3>Steps:</h3>
-    <ol>
-      <li>Select ticket/pass type and quantity</li>
-      <li>Review your cart</li>
-      <li>Choose a payment method</li>
-      <li>Complete your payment</li>
-      <li>Collect ticket(s) and receipt</li>
-    </ol>
-    <button onclick="closeGuide()" style="margin-top: 20px;">Close</button>
-  </div>
 
   <script>
-    function openGuide() {
-      document.getElementById('guidePopup').style.display = 'block';
-    }
-
-    function closeGuide() {
-      document.getElementById('guidePopup').style.display = 'none';
-    }
     
     const purchaseType = sessionStorage.getItem('purchaseType'); 
     let total = 0;

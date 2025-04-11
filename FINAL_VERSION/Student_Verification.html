@@ -147,6 +147,35 @@
       border-radius: 8px;
     }
 
+    #guidePopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40vw;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 30px;
+      background: white;
+      border: 2px solid black;
+      z-index: 1000;
+      font-size: 18px;
+      line-height: 1.6;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    #guidePopup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
     .error-message {
       color: red;
       font-size: 18px;
@@ -202,14 +231,34 @@
 
   
 
-  <!-- Guide Modal -->
-  <div id="guidePopup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 80vw; max-height: 80vh; overflow-y: auto; padding: 30px; background: white; border: 2px solid black;
-      z-index: 1000; font-size: 18px; line-height: 1.5; text-align: left;">
-    <h2>Bus Ticketing Kiosk: Quick Guide</h2>
-    <p>Welcome! This kiosk helps you easily purchase bus tickets, reload transit cards, or check schedules...</p>
-    <button onclick="closeGuide()" style="margin-top: 20px; display: block;">Close</button>
-  </div>
+
+    <!-- When pressing the guide pop up gives instructions -->
+    <div id="guidePopup"> 
+      <h2>Bus Ticketing Kiosk: Quick Guide</h2>
+        <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
+      <h3>How to Use the Kiosk</h3>
+      <ol>
+        <li><strong>After pressing “Press to Begin” on the start screen</strong>
+          <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
+        <li><strong>Select Ticket|Pass Type</strong>
+          <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
+        (<strong>Note:</strong> If you select Transit Card, enter the amount you want to load onto a Transit card and then pay!)</li>
+        <li><strong>Choose Your User Group</strong>
+          <br/>Adult, Senior, Student, or Minor are the options. Use the +/- buttons to select quantity then press "Add to Cart". </li>
+        <li><strong>Review Cart</strong>
+          <br/>Double check the cart and then you can either add more items or checkout.</li>
+        <li><strong>Make a Payment</strong>
+          <br/>Can use cash or card. Follow on-screen instructions.</li>
+        <li><strong>Transaction Complete!</strong>
+          <br/>Take your ticket(s) and receipt. Additionally you can view the bus schedule/map or press "Done"</li>
+      </ol>
+      <h3>Additional Tips</h3>
+        <li><strong>Tourists:</strong> 
+          Change language on the start screen.</li>
+        <li><strong>Students:</strong> 
+          Enter student ID for discounts after pressing + on student.</li>
+        <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
+    </div>
 
   <script>
     const studentIDInput = document.getElementById('studentID');

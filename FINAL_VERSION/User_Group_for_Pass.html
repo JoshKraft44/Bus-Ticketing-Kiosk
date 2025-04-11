@@ -146,11 +146,34 @@
       font-size: 18px;
       cursor: pointer;
     }
-    hr {
-      width: 90%;
-      margin: 40px auto;
+
+    #guidePopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40vw;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 30px;
+      background: white;
+      border: 2px solid black;
+      z-index: 1000;
+      font-size: 18px;
+      line-height: 1.6;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    #guidePopup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
       border: none;
-      border-top: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     /* Responsive tweaks */
@@ -231,30 +254,34 @@
   </div>
 </div>
 
-<!-- Updated Guide Popup -->
-<div id="guidePopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:80vw; max-height:80vh; overflow:auto; padding:30px; background:white; border:2px solid black; z-index:1000; font-size:18px; line-height:1.5;">
-  <h2 style="font-size: 26px; margin-bottom: 10px;">Bus Ticketing Kiosk: Quick Guide</h2>
-  
-  <p>This screen allows you to select how many tickets you’d like to purchase based on the type of rider.</p>
 
-  <h3 style="font-size: 22px;">Step-by-Step Instructions:</h3>
-  <ol>
-    <li><strong>Identify your rider type:</strong> Choose between Adult (18–65), Senior (65+), Student (with ID), or Minor (under 18).</li>
-    <li><strong>Adjust the quantity:</strong> Use the <strong>( + )</strong> button to add tickets or <strong>( – )</strong> to reduce the count.</li>
-    <li><strong>Watch your total:</strong> The Total Amount at the bottom will automatically update based on your selections.</li>
-    <li><strong>Proceed:</strong> Once you’ve selected all the needed tickets, click "Add to Cart" or "Pay" depending on your next step.</li>
-  </ol>
-
-  <h3 style="font-size: 22px;">Helpful Tips:</h3>
-  <ul>
-    <li>Click the “?” button anytime to open this guide again.</li>
-    <li>If you're not sure about pricing, totals are calculated based on city-standard rates shown per user group.</li>
-    <li>Click “Add to Cart” if you wish to continue adding more ticket types.</li>
-    <li>Click “Pay” to go directly to payment.</li>
-  </ul>
-
-  <button onclick="closeGuide()" style="margin-top: 20px; font-size: 18px; padding: 10px 20px;">Close</button>
-</div>
+  <!-- When pressing the guide pop up gives instructions -->
+  <div id="guidePopup"> 
+    <h2>Bus Ticketing Kiosk: Quick Guide</h2>
+      <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
+    <h3>How to Use the Kiosk</h3>
+    <ol>
+      <li><strong>After pressing “Press to Begin” on the start screen</strong>
+        <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
+      <li><strong>Select Ticket|Pass Type</strong>
+        <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
+      (<strong>Note:</strong> If you select Transit Card, enter the amount you want to load onto a Transit card and then pay!)</li>
+      <li><strong>Choose Your User Group</strong>
+        <br/>Adult, Senior, Student, or Minor are the options. Use the +/- buttons to select quantity then press "Add to Cart". </li>
+      <li><strong>Review Cart</strong>
+        <br/>Double check the cart and then you can either add more items or checkout.</li>
+      <li><strong>Make a Payment</strong>
+        <br/>Can use cash or card. Follow on-screen instructions.</li>
+      <li><strong>Transaction Complete!</strong>
+        <br/>Take your ticket(s) and receipt. Additionally you can view the bus schedule/map or press "Done"</li>
+    </ol>
+    <h3>Additional Tips</h3>
+      <li><strong>Tourists:</strong> 
+        Change language on the start screen.</li>
+      <li><strong>Students:</strong> 
+        Enter student ID for discounts after pressing + on student.</li>
+      <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
+  </div>
 
 <!-- JS Logic -->
 <script>

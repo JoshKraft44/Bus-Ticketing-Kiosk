@@ -85,28 +85,6 @@
       color: blue;
     }
 
-    #guidePopup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vw;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 30px;
-      background: white;
-      border: 2px solid black;
-      z-index: 1000;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    #guidePopup button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 18px;
-    }
   </style>
 </head>
 <body>
@@ -115,7 +93,6 @@
     <img src="coc-logo.svg" alt="Calgary Logo" />
   </header>
 
-  <!-- Embed PDF here -->
   <iframe src="./CalgaryTransitMap.pdf" title="Calgary Transit Map"></iframe>
 
   <div class="btn-group">
@@ -125,30 +102,9 @@
     <a href="PressToBegin.html" class="btn-icon" title="Cancel">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
-    <button class="btn-icon" onclick="openGuide()" title="Help">
-      <i class="fas fa-question-circle"></i>
-    </button>
   </div>
 
-  <!-- Guide popup -->
-  <div id="guidePopup">
-    <h2>Transit Map Guide</h2>
-    <p>This map shows the Calgary Transit network. You can zoom in to view detailed routes, major stops, and CTrain stations. Use this to plan your journey before selecting your ticket or pass.</p>
-    <ul>
-      <li>Use pinch or scroll to zoom.</li>
-      <li>Use the Back button to return.</li>
-      <li>Press Cancel to restart the kiosk.</li>
-    </ul>
-    <button onclick="closeGuide()">Close</button>
-  </div>
 
-  <script>
-    function openGuide() {
-      document.getElementById('guidePopup').style.display = 'block';
-    }
-    function closeGuide() {
-      document.getElementById('guidePopup').style.display = 'none';
-    }
   </script>
 </body>
 </html>
