@@ -248,7 +248,7 @@
       <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
     <h3>How to Use the Kiosk</h3>
     <ol>
-      <li><strong>After pressing “Press to Begin” on the start screen</strong>
+      <li><strong>After pressing "Press to Begin" on the start screen</strong>
         <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
       <li><strong>Select Ticket|Pass Type</strong>
         <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
@@ -332,13 +332,23 @@
   });
 
   function handleCheckout() {
+    // Check if any tickets are selected
+    let totalQuantity = 0;
+    document.querySelectorAll('.btn-group-2').forEach(group => {
+        totalQuantity += parseInt(group.querySelector('.quantity').textContent);
+    });
+
+    if (totalQuantity === 0) {
+        alert('Please select at least one ticket before proceeding to cart.');
+        return;
+    }
+
     const studentCount = parseInt(document.querySelector('.row-3 .quantity').textContent);
     if (studentCount > 0) {
-      localStorage.setItem('requiresStudentVerification', 'true');
-      window.location.href = "Student_Verification.html";
+        localStorage.setItem('requiresStudentVerification', 'true');
+        window.location.href = "Student_Verification.html";
     } else {
-      // window.location.href = "Confirm_Ticket_Payment.html";
-      window.location.href = "Ticket_Cart.html";
+        window.location.href = "Ticket_Cart.html";
     }
   }
 
