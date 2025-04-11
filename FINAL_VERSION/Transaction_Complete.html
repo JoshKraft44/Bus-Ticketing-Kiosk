@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Transaction Complete</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    img.logo {
+      width: 280px;
+    }
+
+    h1 {
+      font-size: 36px;
+
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .link-button {
+      display: block;
+      background-color: white;
+      color: #000;
+      text-decoration: none;
+      border: 2px solid black;
+      font-size: 24px;
+      padding: 20px;
+      margin: 15px auto;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 8px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .link-button:hover {
+      background-color: #eee;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="coc-logo.svg" alt="Calgary Logo" class="logo" />
+
+    <h1>Transaction Complete!</h1>
+    <h2><strong>Please retrieve your tickets below.</strong></h2>
+
+    <a class="link-button" href="Bus_Schedule_Again.html">Bus Schedule</a>
+    <a class="link-button" href="Bus_Map_Again.html">Map of Bus Routes</a>
+
+  </div>
+  <div style="margin-top: 40px; width: 100%; text-align: center;">
+    <h2 style="font-size: 28px;">Receipt:</h2>
+    <p id="receipt-type" style="font-size: 22px; font-weight: bold;">Ticket/Pass Type: </p>
+  
+    <div style=" font-size: 22px;">
+      <p><strong>Adult:</strong> <span id="receipt-adult">0</span></p>
+      <p><strong>Senior:</strong> <span id="receipt-senior">0</span></p>
+      <p><strong>Student:</strong> <span id="receipt-student">0</span></p>
+      <p><strong>Minor:</strong> <span id="receipt-minor">0</span></p>
+      <p><strong>Total Paid:</strong> <span id="receipt-total">0.00</span></p>
+    </div>
+  
+    <p style="font-size: 20px; margin-top: 20px;">
+      Please collect your tickets or passes and receipt from the dispenser below.
+    </p>
+  
+    <a href="PressToBegin.html" class="link-button" style="margin-top: 30px; width: 300px;">Done</a>
+  </div>
+  <script>
+   // Load and display receipt info from sessionStorage
+    const purchaseType = sessionStorage.getItem('purchaseType'); // 'ticket' or 'pass'
+    const totalTicketAmount = sessionStorage.getItem('totalAmount') || "0.00"; // Total cost
+    const ticketType = sessionStorage.getItem('ticketType'); // e.g., 'Single Use', 'Round Trip'
+    const passType = sessionStorage.getItem('passType'); // e.g., 'Daily', 'Monthly', 'Yearly'
+    const totalPassAmount = sessionStorage.getItem('totalPassAmount') || "0.00";
+    const ticketCounts = JSON.parse(sessionStorage.getItem('ticketCounts'));
+    const passCounts = JSON.parse(sessionStorage.getItem('passCounts'));
+    // Map rows to user groups
+    const userGroupMap = {
+    "row-1": "Adult",
+    "row-2": "Senior",
+    "row-3": "Student",
+    "row-4": "Minor"
+    };
+
+    // Display receipt based on purchase type
+    if (purchaseType === 'ticket') {
+        // Display ticket type
+        document.getElementById("receipt-type").textContent = `Ticket Type: ${ticketType}`;
+
+        // Display individual ticket counts
+        for (const row in ticketCounts) {
+            const userGroup = userGroupMap[row];
+            console.log(userGroup)
+            if (userGroup) {
+            const elementId = `receipt-${userGroup.toLowerCase()}`; // e.g., 'receipt-adult'
+            console.log(elementId)
+            document.getElementById(elementId).textContent = ticketCounts[row] || 0;
+            }
+        }
+        document.getElementById("receipt-total").textContent = `$${parseFloat(totalTicketAmount).toFixed(2)}`;
+    } else if (purchaseType === 'pass') {
+        // Display pass type
+        document.getElementById("receipt-type").textContent = `Pass Type: ${passType}`;
+
+        // Display individual pass counts
+        for (const row in passCounts) {
+            const userGroup = userGroupMap[row];
+            if (userGroup) {
+            const elementId = `receipt-${userGroup.toLowerCase()}`; // e.g., 'receipt-adult'
+            document.getElementById(elementId).textContent = passCounts[row] || 0;
+            }
+        }
+        document.getElementById("receipt-total").textContent = `${parseFloat(totalPassAmount).toFixed(2)}`;
+    }
+  </script>
+  
+</body>
+</html>

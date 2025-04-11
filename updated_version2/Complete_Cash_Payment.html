@@ -207,7 +207,7 @@
       document.getElementById('guidePopup').style.display = 'none';
     }
     
-    const purchaseType = sessionStorage.getItem('purchaseType'); // 'ticket' or 'pass'
+    const purchaseType = sessionStorage.getItem('purchaseType'); 
     let total = 0;
     if(purchaseType == 'pass'){
         total = sessionStorage.getItem("totalPassAmount") || "0.00";
