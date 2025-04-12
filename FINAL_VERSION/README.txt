@@ -13,6 +13,9 @@ TA: Huann Zhao
 
 Calgary Transit Bus Ticketing Kiosk:
 
+- Live demo: https://cpsc-481.vercel.app/
+- Alternatively can go into the FINAL_VERSION folder submitted and then use live server in vs code on "PressToBegin.html"
+
 -  This is a touch-screen kiosk system for purchasing bus tickets and passes, reloading transit cards.
 
 
