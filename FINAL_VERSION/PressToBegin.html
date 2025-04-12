@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calgary Transit - Welcome</title>
   <style>
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,7 +25,6 @@
       font-size: 32px;
       margin: 10px 0 30px;
     }
-
     .press-section {
       display: flex;
       flex-direction: column;
@@ -35,17 +33,14 @@
       text-decoration: none;
       color: inherit;
     }
-
     .press-section h2 {
       font-size: 30px;
       color: #eb041e;
       margin: 0;
     }
-
     .press-section img {
       width: 150px;
     }
-
     .btn-language {
       width: 140px;
       border-radius: 10px;
@@ -85,11 +80,12 @@
           border-top: 2px solid #ccc;
         }
 
+    
   </style>
 </head>
 <body>
   <header>
-    <img src="coc-logo.svg" alt="Calgary Logo" />
+    <img src="coc-logo.svg"/>
     <h1>Transit</h1>
   </header>
 
@@ -117,6 +113,9 @@
     function closeGuide() {
       document.getElementById('guidePopup').style.display = 'none';
     }
+    sessionStorage.setItem('totalPassAmount', '0');
+    sessionStorage.setItem('totalAmount', '0');
   </script>
+
 </body>
 </html>

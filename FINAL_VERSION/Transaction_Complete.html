@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
   <title>Transaction Complete</title>
   <style>
     body {
@@ -54,6 +53,7 @@
   </style>
 </head>
 <body>
+
   <div class="container">
     <img src="coc-logo.svg" alt="Calgary Logo" class="logo" />
 
@@ -82,54 +82,52 @@
   
     <a id="cancel-btn" href="PressToBegin.html" class="link-button" style="margin-top: 30px; width: 300px;">Done</a>
   </div>
+
+
+
   <script>
-   // Load and display receipt info from sessionStorage
-    const purchaseType = sessionStorage.getItem('purchaseType'); // 'ticket' or 'pass'
-    const totalTicketAmount = sessionStorage.getItem('totalAmount') || "0.00"; // Total cost
-    const ticketType = sessionStorage.getItem('ticketType'); // e.g., 'Single Use', 'Round Trip'
-    const passType = sessionStorage.getItem('passType'); // e.g., 'Daily', 'Monthly', 'Yearly'
+    const purchaseType = sessionStorage.getItem('purchaseType'); 
+    const totalTicketAmount = sessionStorage.getItem('totalAmount') || "0.00"; 
+    const ticketType = sessionStorage.getItem('ticketType'); 
+    const passType = sessionStorage.getItem('passType'); 
     const totalPassAmount = sessionStorage.getItem('totalPassAmount') || "0.00";
     const ticketCounts = JSON.parse(sessionStorage.getItem('ticketCounts'));
     const passCounts = JSON.parse(sessionStorage.getItem('passCounts'));
-    // Map rows to user groups
     const userGroupMap = {
     "row-1": "Adult",
     "row-2": "Senior",
     "row-3": "Student",
     "row-4": "Minor"
     };
+    
 
-    // Display receipt based on purchase type
     if (purchaseType === 'ticket') {
-        // Display ticket type
         document.getElementById("receipt-type").textContent = `Ticket Type: ${ticketType}`;
 
-        // Display individual ticket counts
         for (const row in ticketCounts) {
             const userGroup = userGroupMap[row];
             console.log(userGroup)
             if (userGroup) {
-            const elementId = `receipt-${userGroup.toLowerCase()}`; // e.g., 'receipt-adult'
+            const elementId = `receipt-${userGroup.toLowerCase()}`; 
             console.log(elementId)
             document.getElementById(elementId).textContent = ticketCounts[row] || 0;
             }
         }
         document.getElementById("receipt-total").textContent = `$${parseFloat(totalTicketAmount).toFixed(2)}`;
     } else if (purchaseType === 'pass') {
-        // Display pass type
+ 
         document.getElementById("receipt-type").textContent = `Pass Type: ${passType}`;
 
-        // Display individual pass counts
+
         for (const row in passCounts) {
             const userGroup = userGroupMap[row];
             if (userGroup) {
-            const elementId = `receipt-${userGroup.toLowerCase()}`; // e.g., 'receipt-adult'
+            const elementId = `receipt-${userGroup.toLowerCase()}`; 
             document.getElementById(elementId).textContent = passCounts[row] || 0;
             }
         }
         document.getElementById("receipt-total").textContent = `${parseFloat(totalPassAmount).toFixed(2)}`;
     }
   </script>
-  
 </body>
 </html>

@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reload Transit Card</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--external library used: https://cdnjs.com/libraries/font-awesome -->
   <style>
     body {
       margin: 0;
@@ -147,12 +145,12 @@
       cursor: pointer;
     }
 
-    
+
   </style>
 </head>
 <body>
   <header>
-    <img src="coc-logo.svg" alt="Calgary Logo" />
+    <img src="coc-logo.svg"  />
     <h1>Reload Transit Card</h1>
   </header>
 
@@ -200,6 +198,7 @@
     </button>
   </div>
 
+
    <!-- When pressing the guide pop up gives instructions -->
    <div id="guidePopup"> 
     <h2>Bus Ticketing Kiosk: Quick Guide</h2>
@@ -227,6 +226,7 @@
         Enter student ID for discounts after pressing + on student.</li>
       <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
   </div>
+
 
   <script>
     document.querySelectorAll('.btn-number').forEach(button => {
@@ -266,5 +266,6 @@
         window.location.href = 'Insert_Transit_Card.html';
     }
   </script>
+
 </body>
 </html>

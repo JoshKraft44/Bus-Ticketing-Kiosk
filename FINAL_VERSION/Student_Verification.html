@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Student verification</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Student Verification</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /><!--external library used: https://cdnjs.com/libraries/font-awesome -->
   <style>
+
     body {
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
@@ -186,7 +186,7 @@
 
 </head>
 <body>
-  <img src="coc-logo.svg" alt="City of Calgary Logo">
+  <img src="coc-logo.svg">
   <h1>Verify Student Identity</h1>
   <h2>Enter your 7-digit Student ID Number</h2>
 
@@ -195,7 +195,7 @@
       <input id="studentID" type="text" maxlength="7" placeholder="Student ID" />
       <button id="backspace" class="backspace-btn" style="background-color:  #c8102e; color: white;">⌫</button>
     </div>
-    <div id="errorMessage" class="error-message">Please enter a valid 7-digit Student ID</div>
+    <div id="errorMessage" class="error-message">Enter valid 7-digit Student ID</div>
 
     <div class="btn-pad">
       <button class="btn-number">1</button>
@@ -223,10 +223,7 @@
         <i class="fas fa-question-circle"></i>
       </button>
     </div>
-
-
   </div>
-
   
 
   
@@ -303,5 +300,7 @@
       document.getElementById('guidePopup').style.display = 'none';
     }
   </script>
+
+
 </body>
 </html>

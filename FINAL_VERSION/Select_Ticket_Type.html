@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select Purchase Type</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Select Ticket Type</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--external library used: https://cdnjs.com/libraries/font-awesome -->
   <style>
     body {
       margin: 0;
@@ -113,6 +111,7 @@
       height: 1px;
       background-color: #aaa;
     }
+
   </style>
 </head>
 <body>
@@ -120,10 +119,9 @@
   
 
   <div style="text-align: center;">
-    <img src="coc-logo.svg" alt="Calgary Transit Logo" />
+    <img src="coc-logo.svg" />
     <h1>Select Ticket Type</h1>
   </div>
-
   <div class="container">
     <a class="link-button" href="Select_User_Group_Ticket.html" onclick="setTicketType('single')"><b>Single Use</b> Ticket</a>
     <a class="link-button" href="Select_User_Group_Ticket.html" onclick="setTicketType('roundTrip')"><b>Round Trip</b> Ticket</a>
@@ -170,8 +168,10 @@
         Enter student ID for discounts after pressing + on student.</li>
       <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
   </div>
+
   <script>
     
+  
     const totalAmount = sessionStorage.getItem('totalAmount');
     
     function setTicketType(type) {

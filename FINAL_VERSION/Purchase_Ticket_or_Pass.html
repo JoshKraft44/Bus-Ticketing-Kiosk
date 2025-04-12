@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Select Purchase Type</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--external library used: https://cdnjs.com/libraries/font-awesome -->
   <style>
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -119,12 +118,12 @@
           border-radius: 8px;
           cursor: pointer;
         }
-        
+  
   </style>
 </head>
 <body>
   <header>
-    <img src="coc-logo.svg" alt="Calgary Logo">
+    <img src="coc-logo.svg" >
     <h1>Select Purchase Type</h1>
   </header>
 
@@ -148,6 +147,7 @@
       </button>
     </div>
   </main>
+
 
    <!-- When pressing the guide pop up gives instructions -->
    <div id="guidePopup"> 
@@ -176,6 +176,7 @@
         Enter student ID for discounts after pressing + on student.</li>
       <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
   </div>
+
   <script>
     function openGuide() {
       document.getElementById('guidePopup').style.display = 'block';
@@ -187,5 +188,6 @@
       sessionStorage.setItem('purchaseType', type);
     }
   </script>
+
 </body>
 </html>

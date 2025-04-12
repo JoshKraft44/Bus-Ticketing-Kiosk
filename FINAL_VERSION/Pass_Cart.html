@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>Your Cart</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--external library used: https://cdnjs.com/libraries/font-awesome -->
   <style>
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f8f8f8;
@@ -135,13 +135,15 @@
       border-radius: 8px;
       cursor: pointer;
     }
-   
+
   </style>
 </head>
 <body>
-  <img src="coc-logo.svg" alt="Calgary Logo">
+  <img src="coc-logo.svg">
   <h1>Your Cart</h1>
   <h2>Your Cart Items are Shown Below</h2>
+
+
   <p id="passTypeDisplay" style="font-size: 18px; color: #555; margin-bottom: 20px;"></p>
 
   <div id="cartItemsContainer">
@@ -152,7 +154,6 @@
 
   <div class="button-row">
     <a class="link-button" href="Select_Pass_Type.html" onclick="preserveCartState()"><i class="fa-solid fa-plus"></i> Add More Items</a>
-    <!-- <a class="link-button" href="Confirm_Pass_Payment.html"><i class="fa-solid fa-credit-card"></i> Checkout</a> -->
     <a id="pass-btn" class="link-button" href="Payment_Methods.html"><i class="fa-solid fa-credit-card"></i> Checkout</a>
   </div>
 
@@ -169,6 +170,7 @@
       <i class="fas fa-question-circle"></i>
     </button>
   </div>
+
 
    <!-- When pressing the guide pop up gives instructions -->
    <div id="guidePopup"> 
@@ -238,7 +240,7 @@
         container.innerHTML = '';
         const passType = sessionStorage.getItem('passType') || 'daily';
         const passTypeDisplay = document.getElementById('passTypeDisplay');
-        const formattedPassType = passType.charAt(0).toUpperCase() + passType.slice(1); // Capitalize first letter
+        const formattedPassType = passType.charAt(0).toUpperCase() + passType.slice(1); 
         passTypeDisplay.textContent = `Pass Type: ${formattedPassType}`;
         console.log('passType:', passType);
         const ticketCounts = JSON.parse(sessionStorage.getItem('passCounts')) || {};
@@ -267,35 +269,13 @@
       const passType = sessionStorage.getItem('passType') || 'daily';
       const totalPassAmount = sessionStorage.getItem('totalPassAmount') || 0;
 
-      // Ensure the current state is saved in sessionStorage
+
       sessionStorage.setItem('passCountsCart', JSON.stringify(passCounts));
       sessionStorage.setItem('passTypeCart', passType);
       sessionStorage.setItem('totalPassAmountCart', totalPassAmount);
     }
     preserveCartState();
     renderCartItems();
-    // function renderCart() {
-    //   const cartData = JSON.parse(sessionStorage.getItem('cart')) || {};
-    //   const container = document.getElementById('cartItemsContainer');
-    //   container.innerHTML = '';
-    //   let total = 0;
-
-    //   Object.entries(cartData).forEach(([label, count]) => {
-    //     if (count > 0) {
-    //       const itemDiv = document.createElement('div');
-    //       itemDiv.className = 'cart-item';
-    //       itemDiv.innerHTML = `
-    //         <span><strong>${label}</strong></span>
-    //         <span class="quantity">${count}</span>
-    //         <button class="btn-circle" onclick="decrementItem('${label}')"><i class="fa-solid fa-minus"></i></button>
-    //       `;
-    //       container.appendChild(itemDiv);
-    //       total += PRICES[label] * count;
-    //     }
-    //   });
-
-    //   document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
-    // }
 
     function decrementItem(label) {
       const cartData = JSON.parse(sessionStorage.getItem('cart')) || {};
@@ -316,5 +296,7 @@
 
     renderCartItems();
   </script>
+
+
 </body>
 </html>

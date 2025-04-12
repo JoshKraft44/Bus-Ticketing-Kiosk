@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>Your Cart</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--external library used: https://cdnjs.com/libraries/font-awesome -->
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -125,7 +124,8 @@
   </style>
 </head>
 <body>
-  <img src="coc-logo.svg" alt="Calgary Logo">
+
+  <img src="coc-logo.svg">
   <h1>Your Cart</h1>
   <h2>Your Cart Items are Shown Below</h2>
 
@@ -182,6 +182,7 @@
         Enter student ID for discounts after pressing + on student.</li>
       <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
   </div>
+
   <script>
     const ticketType = sessionStorage.getItem('ticketType') || 'single';
     const prices = {
