@@ -15,6 +15,7 @@ Calgary Transit Bus Ticketing Kiosk:
 
 - Live deployed code: https://cpsc-481.vercel.app/
 - Alternatively can go into the FINAL_VERSION folder submitted and then use live server in VS code on "PressToBegin.html" to start 
+- Github link: https://github.com/JoshKraft44/CPSC-481
 
 -  This is a touch-screen kiosk system for purchasing bus tickets and passes, reloading transit cards.
 
