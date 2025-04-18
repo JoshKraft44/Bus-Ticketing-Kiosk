@@ -13,12 +13,12 @@
 
     header {
       text-align: center;
-      padding: 40px 20px 20px 20px;
     }
 
     header img {
-      width: 180px;
+      width: 300px;
       margin-bottom: 1px;
+      margin-top: 20px;
     }
 
     h1 {
@@ -77,7 +77,7 @@
     .divider {
           width: 100%;
           margin: 30px auto;
-          border-top: 2px solid #141414;
+          border-top: 2px solid #ccc;
           max-width: 500px;
         }
 
@@ -97,25 +97,32 @@
     </a>
   </main>
 
-
   <div class="divider"></div>
 
   <div class="btn-bar">
-    <div class="btn-language">
+    <div class="btn-language" onclick="openLanguage()">
       English ▲
-    </div>
+    </div>    
   </div>
 
-
+  <div id="languagePopup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: white; border: 2px solid black; padding: 20px; z-index: 1000; text-align: center; border-radius: 10px;">
+   <h2>Language Selection</h2>
+   <p>Select your preferred language:</p>
+   <button onclick="changeLanguage('English')">English</button>
+   <button onclick="changeLanguage('Spanish')">Spanish</button>
+   <button onclick="changeLanguage('French')">French</button>
+   <br/><br/>
+   <button onclick="closeGuide()">Close</button>
+ </div>
+ 
   <script>
-    function openGuide() {
-      document.getElementById('guidePopup').style.display = 'block';
+    function openLanguage() {
+      document.getElementById('languagePopup').style.display = 'block';
     }
     function closeGuide() {
-      document.getElementById('guidePopup').style.display = 'none';
+      document.getElementById('languagePopup').style.display = 'none';
     }
-    sessionStorage.setItem('totalPassAmount', '0');
-    sessionStorage.setItem('totalAmount', '0');
   </script>
 
 </body>
