@@ -2,36 +2,24 @@
 <html lang="en">
 <head>
   <title>Transaction Complete</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
       text-align: center;
     }
-
     .container {
       max-width: 600px;
       margin: auto;
     }
-
-    img.logo {
-      width: 300px;
-      margin-top: 20px;
-    }
-
     h1 {
       font-size: 36px;
-
     }
-
     h2 {
       font-size: 22px;
       margin-bottom: 40px;
       color: #333;
     }
-
     .link-button {
       display: block;
       background-color: white;
@@ -46,88 +34,109 @@
       border-radius: 8px;
       transition: all 0.2s ease-in-out;
     }
-
     .link-button:hover {
       background-color: #eee;
     }
-
+    .receipt-section {
+      margin-top: 40px;
+      width: 100%;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <img src="coc-logo.svg" alt="Calgary Logo" class="logo" />
-
-    <h1>Transaction Complete!</h1>
+    <header>
+      <img src="coc-logo.svg" alt="Calgary Logo" />
+      <h1>Transaction Complete!</h1>
+    </header>
     <h2><strong>Please retrieve your tickets below.</strong></h2>
 
     <a class="link-button" href="Bus_Schedule_Again.html">Bus Schedule</a>
     <a class="link-button" href="Bus_Map_Again.html">Map of Bus Routes</a>
-
   </div>
-  <div style="margin-top: 40px; width: 100%; text-align: center;">
+
+  <div class="receipt-section">
     <h2 style="font-size: 28px;">Receipt:</h2>
     <p id="receipt-type" style="font-size: 22px; font-weight: bold;">Ticket/Pass Type: </p>
-  
-    <div style=" font-size: 22px;">
+
+    <div id="receipt-details" style="font-size: 22px;">
       <p><strong>Adult:</strong> <span id="receipt-adult">0</span></p>
       <p><strong>Senior:</strong> <span id="receipt-senior">0</span></p>
       <p><strong>Student:</strong> <span id="receipt-student">0</span></p>
       <p><strong>Minor:</strong> <span id="receipt-minor">0</span></p>
-      <p><strong>Total Paid:</strong> <span id="receipt-total">0.00</span></p>
     </div>
-  
+
+    <div id="receipt-card" style="font-size: 22px; display: none;">
+      <p><strong>Amount Loaded:</strong> <span id="receipt-reload-amount">$0.00</span></p>
+    </div>
+
+    <p style="font-size: 24px; font-weight: bold;"><strong>Total Paid:</strong> <span id="receipt-total">$0.00</span></p>
+
     <p style="font-size: 20px; margin-top: 20px;">
       Please collect your tickets or passes and receipt from the dispenser below.
     </p>
-  
+
     <a id="cancel-btn" href="PressToBegin.html" class="link-button" style="margin-top: 30px; width: 300px;">Done</a>
   </div>
 
-
-
+  <script src="shared.js"></script>
   <script>
-    const purchaseType = sessionStorage.getItem('purchaseType'); 
-    const totalTicketAmount = sessionStorage.getItem('totalAmount') || "0.00"; 
-    const ticketType = sessionStorage.getItem('ticketType'); 
-    const passType = sessionStorage.getItem('passType'); 
+    const purchaseType = sessionStorage.getItem('purchaseType');
+    const totalTicketAmount = sessionStorage.getItem('totalAmount') || "0.00";
+    const ticketType = sessionStorage.getItem('ticketType');
+    const passType = sessionStorage.getItem('passType');
     const totalPassAmount = sessionStorage.getItem('totalPassAmount') || "0.00";
     const ticketCounts = JSON.parse(sessionStorage.getItem('ticketCounts'));
     const passCounts = JSON.parse(sessionStorage.getItem('passCounts'));
+    const reloadAmount = sessionStorage.getItem('reloadAmount') || "0.00";
+
     const userGroupMap = {
-    "row-1": "Adult",
-    "row-2": "Senior",
-    "row-3": "Student",
-    "row-4": "Minor"
+      "row-1": "Adult",
+      "row-2": "Senior",
+      "row-3": "Student",
+      "row-4": "Minor"
     };
-    
 
     if (purchaseType === 'ticket') {
         document.getElementById("receipt-type").textContent = `Ticket Type: ${ticketType}`;
+        document.getElementById("receipt-details").style.display = 'block';
+        document.getElementById("receipt-card").style.display = 'none';
 
-        for (const row in ticketCounts) {
-            const userGroup = userGroupMap[row];
-            console.log(userGroup)
-            if (userGroup) {
-            const elementId = `receipt-${userGroup.toLowerCase()}`; 
-            console.log(elementId)
-            document.getElementById(elementId).textContent = ticketCounts[row] || 0;
-            }
+        if (ticketCounts) {
+          for (const row in ticketCounts) {
+              const userGroup = userGroupMap[row];
+              if (userGroup) {
+                const elementId = `receipt-${userGroup.toLowerCase()}`;
+                document.getElementById(elementId).textContent = ticketCounts[row] || 0;
+              }
+          }
         }
         document.getElementById("receipt-total").textContent = `$${parseFloat(totalTicketAmount).toFixed(2)}`;
+
     } else if (purchaseType === 'pass') {
- 
         document.getElementById("receipt-type").textContent = `Pass Type: ${passType}`;
+        document.getElementById("receipt-details").style.display = 'block';
+        document.getElementById("receipt-card").style.display = 'none';
 
-
-        for (const row in passCounts) {
-            const userGroup = userGroupMap[row];
-            if (userGroup) {
-            const elementId = `receipt-${userGroup.toLowerCase()}`; 
-            document.getElementById(elementId).textContent = passCounts[row] || 0;
-            }
+        if (passCounts) {
+          for (const row in passCounts) {
+              const userGroup = userGroupMap[row];
+              if (userGroup) {
+                const elementId = `receipt-${userGroup.toLowerCase()}`;
+                document.getElementById(elementId).textContent = passCounts[row] || 0;
+              }
+          }
         }
-        document.getElementById("receipt-total").textContent = `${parseFloat(totalPassAmount).toFixed(2)}`;
+        document.getElementById("receipt-total").textContent = `$${parseFloat(totalPassAmount).toFixed(2)}`;
+
+    } else if (purchaseType === 'card') {
+        document.getElementById("receipt-type").textContent = "Transit Card Reload";
+        document.getElementById("receipt-details").style.display = 'none';
+        document.getElementById("receipt-card").style.display = 'block';
+        document.getElementById("receipt-reload-amount").textContent = `$${parseFloat(reloadAmount).toFixed(2)}`;
+        document.getElementById("receipt-total").textContent = `$${parseFloat(reloadAmount).toFixed(2)}`;
     }
   </script>
 </body>

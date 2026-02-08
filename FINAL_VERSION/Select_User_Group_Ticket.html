@@ -2,52 +2,32 @@
 <html lang="en">
 <head>
   <title>Select Tickets</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /><!--external library used: https://cdnjs.com/libraries/font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
   <style>
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-      color: #222;
-    }
-
     .container {
       text-align: center;
     }
-    .center-wrapper{
+    .center-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       margin-right: 5%;
     }
-    img {
-      width: 300px;
-      margin-bottom: 10px;
-      margin-top: 20px;
-    }
-
-    h1 {
-      margin-top: 20px;
-    }
-
     .btn-group-2 {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 15px 0;
+      margin: 10px 0;
       gap: 15px;
       font-size: 22px;
     }
-
     .label-text {
       font-weight: 500;
       min-width: 300px;
       text-align: right;
     }
-
     .btn-circle {
       width: 45px;
       height: 45px;
@@ -59,22 +39,18 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-
     .btn-circle:hover {
       background: #d1d1d1;
     }
-
     .quantity {
       font-size: 26px;
       width: 30px;
     }
-
     .total {
       font-size: 28px;
       margin: 30px 0;
       font-weight: bold;
     }
-
     .btn-action-group {
       display: flex;
       justify-content: center;
@@ -82,7 +58,6 @@
       flex-wrap: wrap;
       margin-bottom: 50px;
     }
-
     .action-btn {
       font-size: 20px;
       padding: 20px 35px;
@@ -97,93 +72,22 @@
       align-items: center;
       gap: 10px;
     }
-
     .action-btn:hover {
       background-color: #f0f0f0;
     }
-
-    .btn-group {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-bottom: 60px;
-    }
-
-    .icon-button {
-      width: 60px;
-      height: 60px;
-      border: 2px solid #333;
-      border-radius: 50%;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      transition: background 0.3s;
-      text-decoration: none;
-    }
-
-    .icon-button:hover {
-      background-color: #eee;
-    }
-
-    .small-button {
-      font-size: 20px;
-      padding: 12px 40px;
-      width: auto;
-    }
-
-    .divider {
-      width: 100%;
-      margin: 30px auto;
-      border-top: 2px solid #ccc;
-      max-width: 500px;
-    }
-
-    #guidePopup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40vw;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 30px;
-      background: white;
-      border: 2px solid black;
-      z-index: 1000;
-      font-size: 18px;
-      line-height: 1.6;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    #guidePopup button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-
   </style>
 </head>
 <body>
 <div class="container">
-  <img src="coc-logo.svg">
-  <h1>Select Tickets</h1>
+  <header>
+    <img src="coc-logo.svg">
+    <h1>Select Tickets</h1>
+  </header>
 
   <div id="errorMessage" style="color: red; font-size: 18px; margin: 10px 0; display: none;">
     Please select at least one ticket before proceeding to cart.
   </div>
-  
+
   <div class="center-wrapper">
     <div class="btn-group-2 row-1">
       <div class="label-text">Adult (age 18-65)</div>
@@ -191,30 +95,29 @@
       <span class="quantity">0</span>
       <button class="btn-circle plus">+</button>
     </div>
-  
+
     <div class="btn-group-2 row-2">
       <div class="label-text">Senior (age 65+)</div>
       <button class="btn-circle minus">-</button>
       <span class="quantity">0</span>
       <button class="btn-circle plus">+</button>
     </div>
-  
+
     <div class="btn-group-2 row-3">
       <div class="label-text">Student (with ID)</div>
       <button class="btn-circle minus">-</button>
       <span class="quantity">0</span>
       <button class="btn-circle plus">+</button>
     </div>
-  
+
     <div class="btn-group-2 row-4">
-      <div class="label-text">Minor (age 0–17)</div>
+      <div class="label-text">Minor (age 0-17)</div>
       <button class="btn-circle minus">-</button>
       <span class="quantity">0</span>
       <button class="btn-circle plus">+</button>
     </div>
   </div>
 
-  
   <div id="totalAmount" class="total">Total Amount: $0.00</div>
 
   <div class="btn-action-group">
@@ -223,27 +126,24 @@
 
   <div class="divider"></div>
 
-
-
-<div class="btn-group">
-  <a href="Select_Ticket_Type.html" class="icon-button" title="Back">
-    <i class="fas fa-arrow-left"></i>
-  </a>
-  <a href="PressToBegin.html" class="icon-button" title="Cancel">
-    <i class="fas fa-times" style="color: #9c2121;"></i>
-  </a>
-  <button class="icon-button" onclick="openGuide()" title="Help">
-    <i class="fas fa-question-circle"></i>
-  </button>
+  <div class="btn-bar">
+    <a href="Select_Ticket_Type.html" class="nav-btn" title="Back">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <a id="cancel-btn" href="PressToBegin.html" class="nav-btn" title="Cancel">
+      <i class="fas fa-times" style="color: #9c2121;"></i>
+    </a>
+    <button class="nav-btn" onclick="openGuide()" title="Help">
+      <i class="fas fa-question-circle"></i>
+    </button>
+  </div>
 </div>
-</main>
 
-
-  <!-- When pressing the guide pop up gives instructions -->
-  <div id="guidePopup"> 
+  <div id="guideOverlay" onclick="closeGuide()"></div>
+  <div id="guidePopup">
     <h2>Bus Ticketing Kiosk: Quick Guide</h2>
       <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
-    <h3>How to Use the Kiosk</h3>
+    <h3>How to Use the Kiosk:</h3>
     <ol>
       <li><strong>After pressing "Press to Begin" on the start screen</strong>
         <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
@@ -260,26 +160,29 @@
         <br/>Take your ticket(s) and receipt. Additionally you can view the bus schedule/map or press "Done"</li>
     </ol>
     <h3>Additional Tips</h3>
-      <li><strong>Tourists:</strong> 
+      <li><strong>Tourists:</strong>
         Change language on the start screen.</li>
-      <li><strong>Students:</strong> 
+      <li><strong>Students:</strong>
         Enter student ID for discounts after pressing + on student.</li>
       <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
+    <br/>
+    <button class="close-guide-btn" onclick="closeGuide()">Close</button>
   </div>
 
+<script src="shared.js"></script>
 <script>
   const prices = {
     single: {
-      "row-1": 3.50,  
-      "row-2": 2.25,  
-      "row-3": 2.50, 
-      "row-4": 1.75   
+      "row-1": 3.50,
+      "row-2": 2.25,
+      "row-3": 2.50,
+      "row-4": 1.75
     },
     roundTrip: {
-      "row-1": 6.00,  
-      "row-2": 3.75,  
-      "row-3": 4.25, 
-      "row-4": 2.75   
+      "row-1": 6.00,
+      "row-2": 3.75,
+      "row-3": 4.25,
+      "row-4": 2.75
     }
   };
 
@@ -301,7 +204,6 @@
     });
 
     document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
-   
     sessionStorage.setItem('ticketCounts', JSON.stringify(counts));
     sessionStorage.setItem('totalAmount', total.toFixed(2));
   }
@@ -309,7 +211,7 @@
   function handleCheckout() {
     let totalQuantity = 0;
     const counts = {};
-    
+
     document.querySelectorAll('.btn-group-2').forEach(group => {
         const row = Array.from(group.classList).find(c => c.startsWith("row-"));
         const quantity = parseInt(group.querySelector('.quantity').textContent);
@@ -324,7 +226,6 @@
 
     document.getElementById('errorMessage').style.display = 'none';
 
- 
     sessionStorage.setItem('ticketCountsCart', JSON.stringify(counts));
     sessionStorage.setItem('totalTicketAmountCart', document.getElementById('totalAmount').textContent.split('$')[1]);
 
@@ -337,9 +238,7 @@
     }
   }
 
-  
   window.addEventListener('DOMContentLoaded', () => {
-
     let savedCounts = JSON.parse(sessionStorage.getItem('ticketCountsCart'));
     let total = parseFloat(sessionStorage.getItem('totalTicketAmountCart'));
 
@@ -347,7 +246,6 @@
         for (const row in savedCounts) {
             const group = document.querySelector(`.${row}`);
             if (!group) continue;
-
             const quantityElement = group.querySelector('.quantity');
             quantityElement.textContent = savedCounts[row];
         }
@@ -355,10 +253,8 @@
             document.getElementById('totalAmount').textContent = `Total Amount: $${total.toFixed(2)}`;
         }
     }
-    
-    updateTotalAmountLabel(); 
+    updateTotalAmountLabel();
   });
-
 
   document.querySelectorAll('.btn-group-2').forEach(group => {
     const quantityEl = group.querySelector('.quantity');
@@ -382,15 +278,6 @@
     });
   });
 
-  function openGuide() {
-    document.getElementById('guidePopup').style.display = 'block';
-  }
-
-  function closeGuide() {
-    document.getElementById('guidePopup').style.display = 'none';
-  }
-
-  
   updateTotalAmountLabel();
 </script>
 

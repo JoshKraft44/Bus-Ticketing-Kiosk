@@ -2,189 +2,95 @@
 <html lang="en">
 <head>
   <title>Insert Transit Card</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /><!--external library used: https://cdnjs.com/libraries/font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
   <style>
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-      margin: 0;
-      padding: 0;
       text-align: center;
     }
-        header {
-        text-align: center;
-        }
-
-        header img {
-          width: 300px;
-          margin-top: 20px;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 40px;
-        }
-
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .link-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: brown;
-            color: white;
-            text-decoration: none;
-            border: 3px solid;
-            border-color: black;
-            cursor: pointer;
-            font-size: 30px;
-            margin-left: 150px;
-            margin-right: 150px;
-        }   
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
-        }
-
-        .divider {
-          width: 100%;
-          margin: 50px auto;
-        }
-        
-        .icon-button {
-        width: 60px;
-        height: 60px;
-        border: 2px solid #333;
-        border-radius: 50%;
-        background: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        cursor: pointer;
-        transition: background 0.3s;
-        text-decoration: none;
-        }
-
-        .icon-button:hover {
-        background-color: #eee;
-        }
-
-        #guidePopup {
-          display: none;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 40vw;
-          max-height: 80vh;
-          overflow-y: auto;
-          padding: 30px;
-          background: white;
-          border: 2px solid black;
-          z-index: 1000;
-          font-size: 18px;
-          line-height: 1.6;
-          border-radius: 10px;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        #guidePopup button {
-          margin-top: 20px;
-          padding: 10px 20px;
-          font-size: 16px;
-          background-color: #333;
-          color: white;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-        }
-
-
-
-    </style>
+    h1 {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .container img.card-img {
+      width: 160px;
+    }
+    .container img.arrow-img {
+      width: 200px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="coc-logo.svg"/>
-        <h1>Insert Transit Card to Reload</h1>
-    </header>
+  <header>
+    <img src="coc-logo.svg"/>
+    <h1>Insert Transit Card to Reload</h1>
+  </header>
 
-<a id="card-btn" href="Payment_Methods.html" style="text-decoration: none;">
-<div class="container">
-<img src="transit_card.png" style="align-items: center; width: 160px;"/>
-<img src="arrow_down.png" style="align-items: center; width: 200px;"/>
-</div>
-</a>
+  <a id="card-btn" href="Payment_Methods.html" style="text-decoration: none;">
+    <div class="container">
+      <img class="card-img" src="transit_card.png" alt="Transit Card"/>
+      <img class="arrow-img" src="arrow_down.png" alt="Insert Card Below"/>
+    </div>
+  </a>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<div class="btn-group">
-    <a href="Enter_Reload_Amount.html" class="icon-button" title="Back">
+  <div class="btn-bar">
+    <a href="Enter_Reload_Amount.html" class="nav-btn" title="Back">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <a id="cancel-btn" href="PressToBegin.html" class="icon-button" title="Cancel">
+    <a id="cancel-btn" href="PressToBegin.html" class="nav-btn" title="Cancel">
       <i class="fas fa-times" style="color: #9c2121;"></i>
     </a>
-    <button class="icon-button" onclick="openGuide()" title="Help">
+    <button class="nav-btn" onclick="openGuide()" title="Help">
       <i class="fas fa-question-circle"></i>
     </button>
   </div>
 
+  <div id="guideOverlay" onclick="closeGuide()"></div>
+  <div id="guidePopup">
+    <h2>Bus Ticketing Kiosk: Quick Guide</h2>
+      <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
+    <h3>How to Use the Kiosk:</h3>
+    <ol>
+      <li><strong>After pressing "Press to Begin" on the start screen</strong>
+        <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
+      <li><strong>Select Ticket|Pass Type</strong>
+        <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
+      (<strong>Note:</strong> If you select Transit Card, enter the amount you want to load onto a Transit card and then pay!)</li>
+      <li><strong>Choose Your User Group</strong>
+        <br/>Adult, Senior, Student, or Minor are the options. Use the +/- buttons to select quantity then press "Add to Cart". </li>
+      <li><strong>Review Cart</strong>
+        <br/>Double check the cart and then you can either add more items or checkout.</li>
+      <li><strong>Make a Payment</strong>
+        <br/>Can use cash or card. Follow on-screen instructions.</li>
+      <li><strong>Transaction Complete!</strong>
+        <br/>Take your ticket(s) and receipt. Additionally you can view the bus schedule/map or press "Done"</li>
+    </ol>
+    <h3>Additional Tips</h3>
+      <li><strong>Tourists:</strong>
+        Change language on the start screen.</li>
+      <li><strong>Students:</strong>
+        Enter student ID for discounts after pressing + on student.</li>
+      <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
+    <br/>
+    <button class="close-guide-btn" onclick="closeGuide()">Close</button>
+  </div>
 
-    <!-- When pressing the guide pop up gives instructions -->
-    <div id="guidePopup"> 
-      <h2>Bus Ticketing Kiosk: Quick Guide</h2>
-        <p>On the bottom of each page, the right arrow is back, the X is cancel session, and the ? is the guide. </p>
-      <h3>How to Use the Kiosk:</h3>
-      <ol>
-        <li><strong>After pressing “Press to Begin” on the start screen</strong>
-          <br/>Select an option: Buy Tickets/Pass, Reload Transit Card, or View Bus Schedule/Map.</li>
-        <li><strong>Select Ticket|Pass Type</strong>
-          <br/>Choose from single-use, round-trip under ticket; or choose daily, monthly, or yearly passes under passes.
-        (<strong>Note:</strong> If you select Transit Card, enter the amount you want to load onto a Transit card and then pay!)</li>
-        <li><strong>Choose Your User Group</strong>
-          <br/>Adult, Senior, Student, or Minor are the options. Use the +/- buttons to select quantity then press "Add to Cart". </li>
-        <li><strong>Review Cart</strong>
-          <br/>Double check the cart and then you can either add more items or checkout.</li>
-        <li><strong>Make a Payment</strong>
-          <br/>Can use cash or card. Follow on-screen instructions.</li>
-        <li><strong>Transaction Complete!</strong>
-          <br/>Take your ticket(s) and receipt. Additionally you can view the bus schedule/map or press "Done"</li>
-      </ol>
-      <h3>Additional Tips</h3>
-        <li><strong>Tourists:</strong> 
-          Change language on the start screen.</li>
-        <li><strong>Students:</strong> 
-          Enter student ID for discounts after pressing + on student.</li>
-        <li><strong>Groups:</strong> Can purchase multiple tickets in one session.</li>
-    </div>
-
-<script>
+  <script src="shared.js"></script>
+  <script>
     document.getElementById('card-btn').addEventListener('click', function () {
       sessionStorage.setItem('pass_bool', 'false');
       sessionStorage.setItem('ticket_bool', 'false');
       sessionStorage.setItem('card_bool', 'true');
     });
-
-    function openGuide() {
-        document.getElementById('guidePopup').style.display = 'block';
-    }
-    function closeGuide() {
-        document.getElementById('guidePopup').style.display = 'none';
-    }
-    </script>
-
+  </script>
 </body>
 </html>
